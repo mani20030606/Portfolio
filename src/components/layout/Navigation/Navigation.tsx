@@ -4,19 +4,17 @@ import { useState, useEffect } from 'react';
 import styles from './Navigation.module.scss';
 import { links } from '@/content/links';
 
-const chapters = [
-  { num: '00', name: 'Beginning', id: 'beginning' },
-  { num: '01', name: 'Person', id: 'person' },
-  { num: '02', name: 'Journey', id: 'journey' },
-  { num: '03', name: 'Mind', id: 'mind' },
-  { num: '04', name: 'Builds', id: 'builds' },
-  { num: '05', name: 'Impact', id: 'impact' },
-  { num: '06', name: 'Beyond', id: 'beyond' },
-  { num: '07', name: 'Connect', id: 'connect' },
+const navLinks = [
+  { num: '01', name: 'Home', id: 'beginning' },
+  { num: '02', name: 'About', id: 'person' },
+  { num: '03', name: 'Projects', id: 'builds' },
+  { num: '04', name: 'Experience', id: 'journey' },
+  { num: '05', name: 'Achievements', id: 'impact' },
+  { num: '06', name: 'Contact', id: 'connect' },
 ];
 
 export function Navigation() {
-  const [activeChapter, setActiveChapter] = useState('00');
+  const [activeSection, setActiveSection] = useState('beginning');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -27,17 +25,17 @@ export function Navigation() {
         setScrollProgress((window.scrollY / docHeight) * 100);
       }
 
-      // Check current visible chapter
-      const chapterElements = chapters.map((c) => ({
-        num: c.num,
+      // Check current visible section
+      const sectionElements = navLinks.map((c) => ({
+        id: c.id,
         el: document.getElementById(c.id),
       }));
 
-      for (const item of chapterElements.reverse()) {
+      for (const item of sectionElements.reverse()) {
         if (item.el) {
           const rect = item.el.getBoundingClientRect();
           if (rect.top <= window.innerHeight * 0.45) {
-            setActiveChapter(item.num);
+            setActiveSection(item.id);
             break;
           }
         }
@@ -70,24 +68,38 @@ export function Navigation() {
         />
 
         <div className={styles.navContainer}>
-          {/* Status Chip (Plain text, No Logo) */}
-          <div className={styles.statusChip}>
-            <span className={styles.statusDot} aria-hidden="true" />
-            <span className={styles.statusText}>Open to Work</span>
-          </div>
+          {/* Brand Left: Infinity Icon + MANI SAIDEEP CHINTHA */}
+          <a href="#beginning" className={styles.brand} aria-label="Mani Saideep Chintha — Home">
+            <svg
+              viewBox="0 0 28 14"
+              className={styles.infinityIcon}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M 7,7 C 7,3.5 10.5,3.5 14,7 C 17.5,10.5 21,10.5 21,7 C 21,3.5 17.5,3.5 14,7 C 10.5,10.5 7,10.5 7,7 Z" />
+            </svg>
+            <span className={styles.brandName}>MANI SAIDEEP CHINTHA</span>
+          </a>
 
-          {/* Desktop Chapter Links (Numbered Plain Text) */}
+          {/* Desktop Links: 01 Home, 02 About, 03 Projects, 04 Experience, 05 Achievements, 06 Contact */}
           <nav className={styles.desktopNav} aria-label="Main Navigation">
-            {chapters.map((ch) => (
+            {navLinks.map((item) => (
               <a
-                key={ch.num}
-                href={`#${ch.id}`}
-                className={`${styles.chapterLink} ${
-                  activeChapter === ch.num ? styles.active : ''
+                key={item.id}
+                href={`#${item.id}`}
+                className={`${styles.navItem} ${
+                  activeSection === item.id ? styles.active : ''
                 }`}
               >
-                <span className={styles.chapterNum}>{ch.num}</span>
-                <span className={styles.chapterName}>{ch.name}</span>
+                <span className={styles.navNum}>{item.num}</span>
+                <span className={styles.navText}>{item.name}</span>
+                {activeSection === item.id && (
+                  <span className={styles.activeUnderline} aria-hidden="true" />
+                )}
               </a>
             ))}
           </nav>
@@ -111,17 +123,17 @@ export function Navigation() {
         <div className={styles.mobileOverlay} role="dialog" aria-modal="true">
           <div className={styles.mobileDrawer}>
             <nav className={styles.mobileNav} aria-label="Mobile Navigation">
-              {chapters.map((ch) => (
+              {navLinks.map((item) => (
                 <a
-                  key={ch.num}
-                  href={`#${ch.id}`}
+                  key={item.id}
+                  href={`#${item.id}`}
                   className={`${styles.mobileLink} ${
-                    activeChapter === ch.num ? styles.active : ''
+                    activeSection === item.id ? styles.active : ''
                   }`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <span className={styles.mobileNum}>{ch.num}</span>
-                  <span className={styles.mobileName}>{ch.name}</span>
+                  <span className={styles.mobileNum}>{item.num}</span>
+                  <span className={styles.mobileName}>{item.name}</span>
                 </a>
               ))}
             </nav>

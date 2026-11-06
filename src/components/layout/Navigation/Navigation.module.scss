@@ -32,27 +32,32 @@
   justify-content: space-between;
 }
 
-// ─── STATUS CHIP ─────────────────────────────────────────────────────────────
-.statusChip {
+// ─── BRAND ───────────────────────────────────────────────────────────────────
+.brand {
   display: inline-flex;
   align-items: center;
-  gap: $space-8;
+  gap: $space-12;
+  color: $text-primary;
+  text-decoration: none;
+  transition: opacity $duration-fast $ease-standard;
+
+  &:hover {
+    opacity: 0.85;
+  }
 }
 
-.statusDot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #FFFFFF;
-  box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+.infinityIcon {
+  width: 22px;
+  height: 12px;
+  stroke: #FFFFFF;
 }
 
-.statusText {
+.brandName {
   font-family: $font-body;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.10em;
-  color: $text-secondary;
+  letter-spacing: 0.16em;
+  color: #FFFFFF;
   text-transform: uppercase;
 }
 
@@ -65,53 +70,48 @@
   @include mobile { display: none; }
 }
 
-.chapterLink {
+.navItem {
   display: inline-flex;
-  flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: 6px;
   font-family: $font-body;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.10em;
-  color: $text-secondary;
+  font-size: 13px;
+  font-weight: 500;
+  color: #A0A0A0;
+  text-decoration: none;
   position: relative;
-  transition: color $duration-fast $ease-standard;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: $accent-lavender;
-    transition: width $duration-standard $ease-enter;
-  }
+  padding: 6px 0;
+  transition: color $duration-fast $ease-standard, transform $duration-fast $ease-standard;
 
   &:hover {
-    color: $text-primary;
-
-    .chapterName { opacity: 1; max-height: 20px; }
+    color: #FFFFFF;
+    transform: translateY(-1px);
   }
 
   &.active {
-    color: $accent-lavender;
-
-    &::after { width: 100%; }
+    color: #FFFFFF;
   }
 }
 
-.chapterNum {
-  display: block;
+.navNum {
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.7;
 }
 
-.chapterName {
-  font-size: 9px;
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: opacity $duration-fast $ease-standard, max-height $duration-fast $ease-standard;
+.navText {
+  font-weight: 500;
+}
+
+.activeUnderline {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #FFFFFF;
+  border-radius: 1px;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
 }
 
 // ─── MOBILE TOGGLE ───────────────────────────────────────────────────────────

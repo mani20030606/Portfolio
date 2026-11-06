@@ -27,11 +27,11 @@ export default function Home() {
     <>
       <Preloader />
       <Navigation />
-      <RecruiterStrip />
       <CanvasContainer />
 
       <main id="main-content">
         <Chapter00Beginning />
+        <RecruiterStrip />
         <Chapter01Person />
         <Chapter02Journey />
         <Chapter03Mind />

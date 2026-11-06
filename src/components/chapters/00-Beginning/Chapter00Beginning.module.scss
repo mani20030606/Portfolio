@@ -6,108 +6,225 @@
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  padding: calc(56px + #{$space-48}) $grid-margin $space-64;
+  padding: calc(56px + #{$space-32}) $grid-margin $space-24;
   overflow: hidden;
+  background-color: #000000;
+  background-image: radial-gradient(circle at 62% 42%, rgba(255, 255, 255, 0.04) 0%, transparent 65%);
 
   @include mobile {
-    padding: calc(56px + #{$space-32}) $space-20 $space-48;
+    padding: calc(56px + #{$space-24}) $space-20 $space-32;
     min-height: 100dvh;
+    overflow-x: hidden;
   }
 }
 
-// ─── LABEL ROW ───────────────────────────────────────────────────────────────
+// ─── EYEBROW LABEL ROW ───────────────────────────────────────────────────────
 .labelRow {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: $space-40;
-}
-
-.chapterLabel {
-  @include type-meta;
-  color: $text-secondary;
-}
-
-.openToWork {
-  display: inline-flex;
-  align-items: center;
-  gap: $space-8;
-  font-family: $font-mono;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: $text-secondary;
-}
-
-.otwDot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #FFFFFF;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-// ─── HEADLINE ────────────────────────────────────────────────────────────────
-.headlineWrap {
-  flex: 1;
-  display: flex;
-  align-items: flex-start;
+  gap: $space-16;
+  margin-bottom: $space-24;
   position: relative;
-  z-index: 2;
-  max-width: 60%;
+  z-index: 4;
 
   @include mobile {
-    max-width: 100%;
-    flex: none;
-    margin-bottom: 300px;
+    margin-bottom: $space-16;
   }
 }
 
-$space-320: 300px;
+.chapterLabel {
+  font-family: $font-body;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.labelLine {
+  display: block;
+  width: 140px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.22);
+
+  @include mobile {
+    width: 60px;
+  }
+}
+
+// ─── CONTENT WRAP ────────────────────────────────────────────────────────────
+.contentWrap {
+  position: relative;
+  z-index: 3;
+  max-width: 620px;
+  display: flex;
+  flex-direction: column;
+
+  @include mobile {
+    max-width: 100%;
+    margin-bottom: 260px;
+  }
+}
+
+.headlineWrap {
+  display: flex;
+  flex-direction: column;
+}
 
 .headline {
-  @include type-hero;
-  color: $text-primary;
-  position: relative;
+  font-family: $font-display;
+  font-size: clamp(44px, 5.8vw, 86px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+  margin: 0;
+
+  @include mobile {
+    font-size: clamp(34px, 9vw, 48px);
+    line-height: 1.1;
+  }
+}
+
+.headlineLine2 {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.32em;
 }
 
 .headlineAccent {
-  // Roboto Italic — emotional contrast within Black weight headline
   font-style: italic;
+  font-weight: 300;
+  letter-spacing: -0.015em;
+  color: #FFFFFF;
+}
+
+.subtitle {
+  font-family: $font-body;
+  font-size: clamp(14px, 1.15vw, 16px);
   font-weight: 400;
-  color: $accent-lavender;
-  letter-spacing: -0.005em;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 480px;
+  margin-top: $space-24;
+  margin-bottom: $space-32;
+
+  @include mobile {
+    margin-top: $space-16;
+    margin-bottom: $space-24;
+    font-size: 14px;
+    max-width: 100%;
+  }
+}
+
+// ─── CALL TO ACTION BUTTONS ──────────────────────────────────────────────────
+.ctas {
+  display: flex;
+  align-items: center;
+  gap: $space-16;
+  margin-bottom: $space-32;
+
+  @include mobile {
+    flex-wrap: wrap;
+    gap: $space-12;
+    margin-bottom: $space-24;
+  }
+}
+
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 28px;
+  background: #FFFFFF;
+  color: #000000;
+  font-family: $font-body;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: 4px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  transition: transform 0.25s $ease-standard, box-shadow 0.25s $ease-standard, background 0.25s $ease-standard;
+
+  &:hover {
+    background: #EFEFEF;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(255, 255, 255, 0.22);
+
+    .btnArrow {
+      transform: translate(3px, -3px);
+    }
+  }
+
+  @include mobile {
+    height: 44px;
+    padding: 0 22px;
+    font-size: 13px;
+  }
+}
+
+.btnArrow {
+  display: inline-block;
+  font-size: 15px;
+  line-height: 1;
+  transition: transform 0.25s $ease-standard;
+}
+
+.secondaryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 28px;
+  background: transparent;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  font-family: $font-body;
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: transform 0.25s $ease-standard, border-color 0.25s $ease-standard, background 0.25s $ease-standard, box-shadow 0.25s $ease-standard;
+
+  &:hover {
+    border-color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 18px rgba(255, 255, 255, 0.08);
+  }
+
+  @include mobile {
+    height: 44px;
+    padding: 0 22px;
+    font-size: 13px;
+  }
 }
 
 // ─── PORTRAIT ────────────────────────────────────────────────────────────────
 .portraitArea {
   position: absolute;
   bottom: 0;
-  right: 5%;
-  width: 42%;
-  max-width: 540px;
-  height: 86%;
-  z-index: 1;
+  right: 4%;
+  width: 58%;
+  max-width: 840px;
+  height: 94%;
+  z-index: 2;
   pointer-events: auto;
   cursor: pointer;
 
   @include mobile {
-    width: 82%;
-    max-width: 340px;
-    height: 52%;
+    width: 92%;
+    max-width: 420px;
+    height: 60%;
     left: 0;
     right: 0;
     margin: 0 auto;
-    bottom: 24%;
-    opacity: 0.55;
-    pointer-events: none;
+    bottom: 14%;
+    pointer-events: auto;
   }
 }
 
@@ -119,22 +236,20 @@ $space-320: 300px;
     transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
     filter 0.55s cubic-bezier(0.16, 1, 0.3, 1);
   transform: translateY(0) scale(1);
-  filter: brightness(0.96) contrast(1.02);
+  filter: brightness(0.97) contrast(1.02);
   will-change: transform, filter;
 
   &:hover {
-    transform: translateY(-12px) scale(1.03);
-    filter: brightness(1.10) contrast(1.06) drop-shadow(0 14px 38px rgba(255, 255, 255, 0.14));
+    transform: translateY(-10px) scale(1.025);
+    filter: brightness(1.10) contrast(1.06) drop-shadow(0 16px 42px rgba(255, 255, 255, 0.16));
   }
 }
 
 .heroImg {
   object-fit: contain;
   object-position: right bottom;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 100%),
-                      linear-gradient(to top, transparent 0%, black 8%, black 100%);
-  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 100%),
-              linear-gradient(to top, transparent 0%, black 8%, black 100%);
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, black 7%, black 100%);
+  mask-image: linear-gradient(to top, transparent 0%, black 7%, black 100%);
 
   @include mobile {
     object-position: center bottom;
@@ -146,139 +261,159 @@ $space-320: 300px;
   inset: 0;
   background: linear-gradient(
     to top,
-    $bg-primary 0%,
-    rgba($bg-primary, 0.85) 6%,
-    transparent 20%
+    #000000 0%,
+    rgba(0, 0, 0, 0.75) 5%,
+    transparent 16%
   );
   pointer-events: none;
-
-  @include mobile {
-    background: linear-gradient(
-      to top,
-      $bg-primary 0%,
-      rgba($bg-primary, 0.85) 10%,
-      transparent 32%
-    );
-  }
 }
 
-// ─── BOTTOM ROW ──────────────────────────────────────────────────────────────
-.bottomRow {
-  position: relative;
-  z-index: 2;
+// ─── BOTTOM-LEFT GRANITE ROCK FOREGROUND ─────────────────────────────────────
+.rockForeground {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 3;
+  pointer-events: none;
+  width: clamp(280px, 28vw, 420px);
+  max-height: 280px;
   display: flex;
   align-items: flex-end;
-  justify-content: space-between;
-  gap: $space-48;
-  margin-top: auto;
+  justify-content: flex-start;
 
   @include mobile {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: $space-32;
-    margin-top: $space-40;
+    width: 200px;
+    opacity: 0.65;
   }
 }
 
-.descriptor {
-  display: flex;
-  flex-direction: column;
-  gap: $space-8;
-}
-
-.roleTag {
-  @include type-meta;
-  color: $accent-icy;
-}
-
-.tagline {
-  font-family: $font-body;
-  font-size: clamp(14px, 1.2vw, 17px);
-  color: $text-secondary;
-  max-width: 44ch;
-  line-height: 1.5;
-}
-
-// ─── CTAs ────────────────────────────────────────────────────────────────────
-.ctas {
-  display: flex;
-  align-items: center;
-  gap: $space-16;
-  flex-shrink: 0;
-
-  @include mobile { flex-wrap: wrap; }
-}
-
-.primaryCta {
-  font-family: $font-display;
-  font-size: 14px;
-  font-weight: 600;
-  color: $bg-primary;
-  background: $accent-lavender;
-  padding: 0 $space-32;
-  height: 52px;
-  display: inline-flex;
-  align-items: center;
-  border-radius: $radius-button;
-  letter-spacing: 0.01em;
-  transition: background $duration-fast $ease-standard, transform $duration-fast $ease-standard;
-
-  &:hover {
-    background: $accent-lavender-hover;
-    transform: translateY(-1px);
-  }
-}
-
-.secondaryCta {
-  font-family: $font-mono;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: $text-secondary;
-  height: 52px;
-  display: inline-flex;
-  align-items: center;
-  border-bottom: 1px solid $border-visible;
-  transition: color $duration-fast $ease-standard, border-color $duration-fast $ease-standard;
-
-  &:hover {
-    color: $text-primary;
-    border-color: $text-primary;
-  }
-}
-
-// ─── SCROLL CUE ──────────────────────────────────────────────────────────────
-.scrollCue {
-  position: absolute;
-  bottom: $space-32;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: $space-8;
-  z-index: 2;
-
-  @include mobile { display: none; }
-}
-
-.scrollLine {
+.rockImg {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: left bottom;
   display: block;
+  filter: brightness(0.92) contrast(1.05);
+}
+
+// ─── RIGHT VERTICAL SIDEBAR ──────────────────────────────────────────────────
+.rightSidebar {
+  position: absolute;
+  right: calc(#{$grid-margin} * 0.9);
+  top: 48%;
+  transform: translateY(-50%);
+  z-index: 4;
+  display: flex;
+  align-items: stretch;
+  gap: $space-16;
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.sidebarLine {
   width: 1px;
-  height: 40px;
-  background: linear-gradient(to bottom, transparent, $border-visible);
-  animation: scrollDrop 1.6s ease-in-out infinite;
+  background: rgba(255, 255, 255, 0.2);
+  align-self: stretch;
 }
 
-@keyframes scrollDrop {
-  0% { opacity: 0; transform: scaleY(0); transform-origin: top; }
-  50% { opacity: 1; transform: scaleY(1); }
-  100% { opacity: 0; transform: scaleY(1); transform-origin: bottom; }
+.sidebarTags {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: $space-24;
 }
 
-.scrollLabel {
-  @include type-meta;
-  font-size: 9px;
-  color: $text-secondary;
+.sidebarTag {
+  font-family: $font-body;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  cursor: default;
+  white-space: nowrap;
+  transition: color 0.25s $ease-standard, transform 0.25s $ease-standard;
+
+  &:hover {
+    color: #FFFFFF;
+    transform: translateX(4px);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+  }
+}
+
+// ─── BOTTOM METRICS BAR ──────────────────────────────────────────────────────
+.metricsBar {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  margin-top: auto;
+  padding-top: $space-20;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include mobile {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-16;
+    padding-top: $space-16;
+  }
+}
+
+.metricItem {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  cursor: default;
+  transition: transform 0.3s $ease-standard;
+  padding: 4px 12px;
+
+  &:hover {
+    transform: translateY(-3px);
+
+    .metricNumber {
+      text-shadow: 0 0 16px rgba(255, 255, 255, 0.7);
+    }
+
+    .metricLabel {
+      color: rgba(255, 255, 255, 0.85);
+    }
+  }
+
+  @include mobile {
+    padding: 0;
+  }
+}
+
+.metricNumber {
+  font-family: $font-display;
+  font-size: clamp(24px, 2.4vw, 34px);
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  transition: text-shadow 0.3s $ease-standard;
+}
+
+.metricLabel {
+  font-family: $font-body;
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  transition: color 0.3s $ease-standard;
+}
+
+.metricDivider {
+  width: 1px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.12);
+
+  @include mobile {
+    display: none;
+  }
 }

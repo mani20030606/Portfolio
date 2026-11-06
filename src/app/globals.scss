@@ -1,0 +1,97 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: $bg-primary;
+  color: $text-primary;
+  font-family: $font-body;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+
+  @include reduced-motion {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background-color: $bg-primary;
+  color: $text-primary;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+#main-content {
+  position: relative;
+  z-index: 1;
+}
+
+// Selection
+::selection {
+  background-color: $accent-lavender;
+  color: $bg-primary;
+}
+
+// Focus rings
+:focus-visible {
+  outline: 2px solid $accent-lavender;
+  outline-offset: 3px;
+}
+
+// Base link
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color $duration-fast $ease-standard;
+}
+
+// Media
+img, svg, video {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+// Skip link
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: $space-24;
+  background: $accent-lavender;
+  color: $bg-primary;
+  padding: $space-12 $space-24;
+  border-radius: $radius-button;
+  font-family: $font-body;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  z-index: 9999;
+  transition: top $duration-fast $ease-standard;
+
+  &:focus { top: $space-24; }
+}
+
+// Thin scrollbar
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: $bg-primary; }
+::-webkit-scrollbar-thumb {
+  background: $border-visible;
+  border-radius: $radius-pill;
+  &:hover { background: $accent-lavender; }
+}

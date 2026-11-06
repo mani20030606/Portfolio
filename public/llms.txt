@@ -1,0 +1,36 @@
+# Mani Saideep Chintha — Portfolio Context for LLMs
+
+> AI/ML Engineer · Computer Vision Developer · AI Product Builder.
+> Open to Work: Available for hire for AI and Computer Vision roles.
+
+## Identity & Roles
+- Name: Mani Saideep Chintha
+- Location: Visakhapatnam, Andhra Pradesh, India
+- Role Focus: AI/ML Engineer, Computer Vision Developer, AI Product Builder
+- Education:
+  - B.Tech in CSE (AI & ML), Sasi Institute of Technology and Engineering, Tadepalligudem (2023–2026), CGPA: 8.15
+  - Diploma in Engineering, Smt. B. Seetha Polytechnic College (2019–2022), 77%
+- Current Experience:
+  - Computer Vision Engineering Intern at Huebits, Visakhapatnam (Jan 2026 – Present, Paid & Onsite)
+- Key Honors:
+  - 1st Prize, RTGS Hackathon (AP State Level) for leading development of the AI-Powered Granite Measurement System.
+
+## Verified Projects
+1. AI-Powered Granite Measurement System (Huebits):
+   - Led project replacing manual field tape measurements with automated camera-based metric volume estimation.
+   - Stack: Python, YOLOv8 segmentation, MobileSAM boundary refinement, ArUco marker homography, FastAPI, React Native (Expo), ONNX/TFLite.
+   - Outcome: First Prize, RTGS Hackathon.
+2. Highway Road Accident Prevention System:
+   - Status: In development. Hazard, pedestrian, and vehicular detection models.
+3. Hybrid GraphRAG Intelligence System:
+   - Hybrid retrieval architecture combining Neo4j knowledge graph traversal and ChromaDB vector search with all-MiniLM-L6-v2 embeddings.
+4. CareerPilot AI:
+   - Career copilot parsing resumes, identifying skill gaps, and generating personalized interview simulations. Demonstrated at Product Space × Wispr Flow AI Hackathon.
+
+## Links & Contacts
+- GitHub: https://github.com/mani20030606
+- LinkedIn: https://linkedin.com/in/mani-saideep-chintha
+- Email: manisaideep03@gmail.com
+- Resume: /assets/resume.pdf
+- Kaggle: https://kaggle.com/manisaideepchintha
+

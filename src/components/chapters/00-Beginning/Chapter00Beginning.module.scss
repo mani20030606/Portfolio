@@ -1,0 +1,284 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.section {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: calc(56px + #{$space-48}) $grid-margin $space-64;
+  overflow: hidden;
+
+  @include mobile {
+    padding: calc(56px + #{$space-32}) $space-20 $space-48;
+    min-height: 100dvh;
+  }
+}
+
+// ─── LABEL ROW ───────────────────────────────────────────────────────────────
+.labelRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $space-40;
+}
+
+.chapterLabel {
+  @include type-meta;
+  color: $text-secondary;
+}
+
+.openToWork {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-8;
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $text-secondary;
+}
+
+.otwDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+// ─── HEADLINE ────────────────────────────────────────────────────────────────
+.headlineWrap {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+  max-width: 60%;
+
+  @include mobile {
+    max-width: 100%;
+    flex: none;
+    margin-bottom: 300px;
+  }
+}
+
+$space-320: 300px;
+
+.headline {
+  @include type-hero;
+  color: $text-primary;
+  position: relative;
+}
+
+.headlineAccent {
+  // Roboto Italic — emotional contrast within Black weight headline
+  font-style: italic;
+  font-weight: 400;
+  color: $accent-lavender;
+  letter-spacing: -0.005em;
+}
+
+// ─── PORTRAIT ────────────────────────────────────────────────────────────────
+.portraitArea {
+  position: absolute;
+  bottom: 0;
+  right: 5%;
+  width: 42%;
+  max-width: 540px;
+  height: 86%;
+  z-index: 1;
+  pointer-events: auto;
+  cursor: pointer;
+
+  @include mobile {
+    width: 82%;
+    max-width: 340px;
+    height: 52%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: 24%;
+    opacity: 0.55;
+    pointer-events: none;
+  }
+}
+
+.heroImgWrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition:
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(0) scale(1);
+  filter: brightness(0.96) contrast(1.02);
+  will-change: transform, filter;
+
+  &:hover {
+    transform: translateY(-12px) scale(1.03);
+    filter: brightness(1.10) contrast(1.06) drop-shadow(0 14px 38px rgba(255, 255, 255, 0.14));
+  }
+}
+
+.heroImg {
+  object-fit: contain;
+  object-position: right bottom;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 100%),
+                      linear-gradient(to top, transparent 0%, black 8%, black 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 100%),
+              linear-gradient(to top, transparent 0%, black 8%, black 100%);
+
+  @include mobile {
+    object-position: center bottom;
+  }
+}
+
+.portraitFade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    $bg-primary 0%,
+    rgba($bg-primary, 0.85) 6%,
+    transparent 20%
+  );
+  pointer-events: none;
+
+  @include mobile {
+    background: linear-gradient(
+      to top,
+      $bg-primary 0%,
+      rgba($bg-primary, 0.85) 10%,
+      transparent 32%
+    );
+  }
+}
+
+// ─── BOTTOM ROW ──────────────────────────────────────────────────────────────
+.bottomRow {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: $space-48;
+  margin-top: auto;
+
+  @include mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $space-32;
+    margin-top: $space-40;
+  }
+}
+
+.descriptor {
+  display: flex;
+  flex-direction: column;
+  gap: $space-8;
+}
+
+.roleTag {
+  @include type-meta;
+  color: $accent-icy;
+}
+
+.tagline {
+  font-family: $font-body;
+  font-size: clamp(14px, 1.2vw, 17px);
+  color: $text-secondary;
+  max-width: 44ch;
+  line-height: 1.5;
+}
+
+// ─── CTAs ────────────────────────────────────────────────────────────────────
+.ctas {
+  display: flex;
+  align-items: center;
+  gap: $space-16;
+  flex-shrink: 0;
+
+  @include mobile { flex-wrap: wrap; }
+}
+
+.primaryCta {
+  font-family: $font-display;
+  font-size: 14px;
+  font-weight: 600;
+  color: $bg-primary;
+  background: $accent-lavender;
+  padding: 0 $space-32;
+  height: 52px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: $radius-button;
+  letter-spacing: 0.01em;
+  transition: background $duration-fast $ease-standard, transform $duration-fast $ease-standard;
+
+  &:hover {
+    background: $accent-lavender-hover;
+    transform: translateY(-1px);
+  }
+}
+
+.secondaryCta {
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $text-secondary;
+  height: 52px;
+  display: inline-flex;
+  align-items: center;
+  border-bottom: 1px solid $border-visible;
+  transition: color $duration-fast $ease-standard, border-color $duration-fast $ease-standard;
+
+  &:hover {
+    color: $text-primary;
+    border-color: $text-primary;
+  }
+}
+
+// ─── SCROLL CUE ──────────────────────────────────────────────────────────────
+.scrollCue {
+  position: absolute;
+  bottom: $space-32;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-8;
+  z-index: 2;
+
+  @include mobile { display: none; }
+}
+
+.scrollLine {
+  display: block;
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, $border-visible);
+  animation: scrollDrop 1.6s ease-in-out infinite;
+}
+
+@keyframes scrollDrop {
+  0% { opacity: 0; transform: scaleY(0); transform-origin: top; }
+  50% { opacity: 1; transform: scaleY(1); }
+  100% { opacity: 0; transform: scaleY(1); transform-origin: bottom; }
+}
+
+.scrollLabel {
+  @include type-meta;
+  font-size: 9px;
+  color: $text-secondary;
+}

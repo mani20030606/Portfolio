@@ -1,0 +1,64 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.diagramBox {
+  margin-top: $space-48;
+  padding-top: $space-32;
+  border-top: 1px solid $border-subtle;
+}
+
+.diagramTitle {
+  font-family: $font-mono;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $accent-icy;
+  margin-bottom: $space-24;
+}
+
+.diagramSvg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.nodeBox {
+  fill: rgba($bg-elevated, 0.5);
+  stroke: $border-visible;
+  stroke-width: 1;
+}
+
+.nodeBoxAccent {
+  fill: rgba($surface-hover, 0.5);
+  stroke: $accent-lavender;
+  stroke-width: 1;
+}
+
+.nodeTitle {
+  font-family: $font-body;
+  font-size: 11px;
+  font-weight: 700;
+  fill: $text-primary;
+  letter-spacing: 0.04em;
+}
+
+.nodeMeta {
+  font-family: $font-body;
+  font-size: 10px;
+  fill: $text-secondary;
+}
+
+.nodeTag {
+  font-family: $font-body;
+  font-size: 9px;
+  font-weight: 700;
+  fill: $accent-icy;
+}
+
+.arrow {
+  stroke: rgba($accent-lavender, 0.5);
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+}

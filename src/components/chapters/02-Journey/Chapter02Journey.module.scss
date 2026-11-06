@@ -1,0 +1,243 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.section {
+  @include section-rule;
+  padding-top: $section-spacing-desktop;
+  padding-bottom: $section-spacing-desktop;
+
+  @include mobile {
+    padding-top: $section-spacing-mobile;
+    padding-bottom: $section-spacing-mobile;
+  }
+}
+
+.inner {
+  @include page-container;
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: $space-80;
+  align-items: start;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $space-48;
+  }
+}
+
+// ─── TIMELINE COL ────────────────────────────────────────────────────────────
+.timelineCol {
+  display: flex;
+  flex-direction: column;
+  gap: $space-48;
+}
+
+.sectionMeta {
+  display: flex;
+  align-items: center;
+  gap: $space-16;
+}
+
+.sectionNum {
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: $accent-lavender;
+}
+
+.sectionName {
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $text-secondary;
+}
+
+.heading {
+  @include type-chapter-title;
+  color: $text-primary;
+}
+
+// ─── TIMELINE ────────────────────────────────────────────────────────────────
+.timeline {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.milestone {
+  display: grid;
+  grid-template-columns: 130px 24px 1fr;
+  gap: 0 $space-20;
+  min-height: 100px;
+
+  @include mobile {
+    grid-template-columns: 100px 20px 1fr;
+    gap: 0 $space-12;
+  }
+}
+
+.milestoneLeft {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  padding-top: 2px;
+  text-align: right;
+}
+
+.milestonePeriod {
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: $accent-icy;
+}
+
+.milestoneType {
+  font-family: $font-mono;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $text-secondary;
+  opacity: 0.6;
+}
+
+.milestoneDivider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4px;
+}
+
+.dot {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: $accent-lavender;
+  flex-shrink: 0;
+}
+
+.line {
+  display: block;
+  width: 1px;
+  flex: 1;
+  background: $border-visible;
+  margin-top: $space-8;
+  margin-bottom: $space-8;
+}
+
+.milestoneRight {
+  padding-bottom: $space-32;
+}
+
+.milestoneRole {
+  font-family: $font-display;
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 600;
+  color: $text-primary;
+  margin-bottom: $space-6;
+}
+
+.milestonePlace {
+  font-family: $font-body;
+  font-size: 13px;
+  color: $text-secondary;
+  margin-bottom: $space-8;
+}
+
+.milestoneDetail {
+  font-family: $font-mono;
+  font-size: 11px;
+  color: $accent-lavender;
+  letter-spacing: 0.04em;
+}
+
+// ─── RESPONSIBILITIES ─────────────────────────────────────────────────────────
+.respBlock {
+  border-top: 1px solid $border-subtle;
+  padding-top: $space-32;
+  display: flex;
+  flex-direction: column;
+  gap: $space-20;
+}
+
+.respLabel {
+  font-family: $font-mono;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $accent-icy;
+}
+
+.respList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: $space-8;
+
+  li {
+    font-family: $font-body;
+    font-size: 14px;
+    color: $text-secondary;
+    line-height: 1.55;
+    padding-left: $space-16;
+    position: relative;
+
+    &::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: $border-visible;
+    }
+  }
+}
+
+// ─── MEDIA COL ───────────────────────────────────────────────────────────────
+.mediaCol {
+  position: sticky;
+  top: calc(56px + #{$space-48});
+
+  @include mobile { position: static; }
+}
+
+.mediaFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 2px;
+  @include interactive-photo-hover;
+}
+
+.workPhoto {
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(5%);
+}
+
+.mediaCaption {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  margin-top: $space-16;
+}
+
+.captionTag {
+  font-family: $font-mono;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $accent-icy;
+}
+
+.captionText {
+  font-family: $font-body;
+  font-size: 13px;
+  color: $text-secondary;
+}

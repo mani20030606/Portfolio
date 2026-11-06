@@ -1,0 +1,42 @@
+# Mani Saideep Chintha — Full Knowledge Base & Technical Context
+
+Subject: Mani Saideep Chintha
+Status: Open to Work
+Availability: Available for hire: AI / Computer Vision Engineer
+
+## 1. Professional Overview
+Mani Saideep Chintha is an AI/ML Engineer and Computer Vision Developer based in Andhra Pradesh, India. He builds end-to-end intelligent systems, taking problems from machine learning research and dataset curation through model training, quantization, API development, and edge mobile deployment.
+
+## 2. Technical Skills Inventory
+- Programming Languages: Python, JavaScript, HTML, CSS
+- Computer Vision: OpenCV, YOLOv8/v11, Object Detection, Semantic & Instance Segmentation, MobileSAM, ByteTrack Multi-Object Tracking, Camera Calibration, ArUco Homography, DINOv2, EfficientNet
+- Optimization & Edge AI: ONNX, TensorFlow Lite, FP16/INT8 Quantization, Edge AI, Offline Inference
+- AI/ML Core: PyTorch, TensorFlow, scikit-learn, NumPy, Pandas, Model Evaluation (mAP, Precision, Recall)
+- Retrieval & LLM Systems: RAG, GraphRAG, Neo4j, ChromaDB, Sentence Transformers (all-MiniLM-L6-v2), FAISS
+- Backend & Systems: FastAPI, REST APIs, Flask, Docker
+- Mobile & Frontend: React Native (Expo), TypeScript, React, SCSS
+- Databases & Developer Tools: PostgreSQL, MySQL, MongoDB, SQLite, Supabase, Git, GitHub, Jupyter, Kaggle, Streamlit
+
+## 3. Experience
+- Computer Vision Engineering Intern — Huebits, Visakhapatnam (Jan 2026 – Present, Paid & Onsite)
+  - Promoted from campus round to paid on-site engineering role.
+  - Led production computer vision projects including data annotation, model training, quantization, and edge deployment.
+  - Spearheaded the AI Granite Measurement System which won 1st Prize at the RTGS Hackathon.
+
+## 4. Academic History
+- B.Tech in Computer Science and Engineering (AI & ML), Sasi Institute of Technology and Engineering, Tadepalligudem (2023–2026, CGPA 8.15)
+- Diploma in Engineering, Smt. B. Seetha Polytechnic College (2019–2022, 77%)
+
+## 5. Projects
+- AI Granite Block Measurement System: Replaces manual tape measurement with vision-based 3D metric calculation. Uses YOLOv8 + MobileSAM mask refinement, ArUco planar homography, and multi-face dimension averaging. Won 1st Prize at RTGS Hackathon.
+- Highway Road Accident Prevention System: In development. Hazard detection, vehicle tracking, and signage analysis.
+- Hybrid GraphRAG Intelligence System: Dual-layer retrieval combining Neo4j graph nodes and ChromaDB vector search.
+- CareerPilot AI: Career readiness and skill-gap copilot demonstrated at the AI Hackathon by Product Space with Wispr Flow.
+
+## 6. Official Contact Channels
+- Email: manisaideep03@gmail.com
+- Resume: https://manisaideep.dev/assets/resume.pdf
+- GitHub: https://github.com/mani20030606
+- LinkedIn: https://linkedin.com/in/mani-saideep-chintha
+- Kaggle: https://kaggle.com/manisaideepchintha
+

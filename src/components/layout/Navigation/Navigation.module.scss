@@ -1,0 +1,196 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+// ─── NAVBAR ──────────────────────────────────────────────────────────────────
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 56px;
+  background: rgba($bg-primary, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba($border-visible, 0.3);
+}
+
+.progressBar {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  background: linear-gradient(90deg, $accent-lavender, $accent-icy);
+  transition: width 80ms linear;
+}
+
+.navContainer {
+  @include page-container;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// ─── STATUS CHIP ─────────────────────────────────────────────────────────────
+.statusChip {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-8;
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+}
+
+.statusText {
+  font-family: $font-body;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  color: $text-secondary;
+  text-transform: uppercase;
+}
+
+// ─── DESKTOP NAV ─────────────────────────────────────────────────────────────
+.desktopNav {
+  display: flex;
+  align-items: center;
+  gap: $space-32;
+
+  @include mobile { display: none; }
+}
+
+.chapterLink {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-family: $font-body;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  color: $text-secondary;
+  position: relative;
+  transition: color $duration-fast $ease-standard;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: $accent-lavender;
+    transition: width $duration-standard $ease-enter;
+  }
+
+  &:hover {
+    color: $text-primary;
+
+    .chapterName { opacity: 1; max-height: 20px; }
+  }
+
+  &.active {
+    color: $accent-lavender;
+
+    &::after { width: 100%; }
+  }
+}
+
+.chapterNum {
+  display: block;
+}
+
+.chapterName {
+  font-size: 9px;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity $duration-fast $ease-standard, max-height $duration-fast $ease-standard;
+}
+
+// ─── MOBILE TOGGLE ───────────────────────────────────────────────────────────
+.menuToggle {
+  display: none;
+  font-family: $font-body;
+  font-size: 11px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: $text-secondary;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: $space-8;
+
+  @include mobile { display: block; }
+}
+
+.menuLabel { pointer-events: none; }
+
+// ─── MOBILE OVERLAY ──────────────────────────────────────────────────────────
+.mobileOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: $bg-primary;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 $space-32;
+}
+
+.mobileDrawer {
+  display: flex;
+  flex-direction: column;
+  gap: $space-48;
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: $space-8;
+}
+
+.mobileLink {
+  display: flex;
+  align-items: baseline;
+  gap: $space-20;
+  padding: $space-12 0;
+  border-bottom: 1px solid $border-subtle;
+  transition: color $duration-fast $ease-standard;
+
+  &.active { color: $accent-lavender; }
+}
+
+.mobileNum {
+  font-family: $font-body;
+  font-size: 11px;
+  font-weight: 700;
+  color: $accent-icy;
+  letter-spacing: 0.10em;
+  min-width: 28px;
+}
+
+.mobileName {
+  font-family: $font-display;
+  font-size: 28px;
+  font-weight: 700;
+  color: $text-secondary;
+
+  .mobileLink.active & { color: $accent-lavender; }
+}
+
+.mobileSocials {
+  display: flex;
+  gap: $space-24;
+}
+
+.socialLink {
+  @include link-action;
+}

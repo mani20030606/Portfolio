@@ -1,0 +1,76 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+// Slim mono bar under nav — no visual weight, just a data strip
+.strip {
+  position: sticky;
+  top: 56px; // below fixed nav
+  z-index: 90;
+  width: 100%;
+  background: $bg-primary;
+  border-bottom: 1px solid $border-subtle;
+  padding: $space-8 0;
+}
+
+.container {
+  @include page-container;
+  display: flex;
+  align-items: center;
+  gap: $space-32;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar { display: none; }
+
+  @include mobile {
+    gap: $space-20;
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: $space-8;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.label {
+  font-family: $font-body;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $accent-icy;
+}
+
+.value {
+  font-family: $font-body;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: $text-secondary;
+}
+
+.divider {
+  width: 1px;
+  height: 16px;
+  background: $border-subtle;
+  flex-shrink: 0;
+
+  @include mobile { display: none; }
+}
+
+.resumeBtn {
+  font-family: $font-body;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: $accent-lavender;
+  margin-left: auto;
+  flex-shrink: 0;
+  transition: color $duration-fast $ease-standard;
+
+  &:hover { color: $accent-lavender-hover; }
+}

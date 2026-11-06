@@ -1,0 +1,298 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.section {
+  @include section-rule;
+  padding-top: $section-spacing-desktop;
+
+  @include mobile { padding-top: $section-spacing-mobile; }
+}
+
+.inner {
+  @include page-container;
+}
+
+// ─── SECTION HEADER ──────────────────────────────────────────────────────────
+.sectionHeader {
+  margin-bottom: $space-96;
+
+  @include mobile { margin-bottom: $space-64; }
+}
+
+.sectionMeta {
+  display: flex;
+  align-items: center;
+  gap: $space-16;
+  margin-bottom: $space-24;
+}
+
+.sectionNum {
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: $accent-lavender;
+}
+
+.sectionName {
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $text-secondary;
+}
+
+.heading {
+  @include type-chapter-title;
+  color: $text-primary;
+  margin-bottom: $space-24;
+}
+
+.sub {
+  font-family: $font-body;
+  font-size: 15px;
+  color: $text-secondary;
+  line-height: 1.6;
+  max-width: 56ch;
+}
+
+// ─── PROJECT ─────────────────────────────────────────────────────────────────
+.project {
+  padding-bottom: $section-spacing-desktop;
+  border-top: 1px solid $border-visible;
+
+  @include mobile { padding-bottom: $section-spacing-mobile; }
+}
+
+.projectBar {
+  padding: $space-24 0;
+  border-bottom: 1px solid $border-subtle;
+  margin-bottom: $space-40;
+}
+
+.projectBarLeft {
+  display: flex;
+  align-items: center;
+  gap: $space-16;
+  margin-bottom: $space-12;
+}
+
+.projectIndex {
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: $accent-icy;
+}
+
+.inDevBadge {
+  font-family: $font-mono;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: #E0E0E0;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: $space-4 $space-12;
+  border-radius: $radius-pill;
+}
+
+.projectTitle {
+  @include type-section;
+  color: $text-primary;
+}
+
+.projectSubtitle {
+  font-family: $font-body;
+  font-size: clamp(16px, 1.4vw, 20px);
+  color: $accent-icy;
+  font-weight: 400;
+  margin-bottom: $space-48;
+  max-width: 60ch;
+}
+
+// ─── GRID ────────────────────────────────────────────────────────────────────
+.projectGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-48;
+  padding: $space-40 0;
+  border-top: 1px solid $border-subtle;
+  border-bottom: 1px solid $border-subtle;
+  margin-bottom: $space-48;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $space-32;
+  }
+}
+
+.projectBlock {
+  display: flex;
+  flex-direction: column;
+  gap: $space-16;
+}
+
+.blockLabel {
+  font-family: $font-mono;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $accent-lavender;
+}
+
+.blockText {
+  font-family: $font-body;
+  font-size: 14px;
+  color: $text-secondary;
+  line-height: 1.65;
+  max-width: 52ch;
+}
+
+.stackRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-8;
+}
+
+.techTag {
+  font-family: $font-mono;
+  font-size: 11px;
+  color: $text-secondary;
+  background: $bg-elevated;
+  border: 1px solid $border-subtle;
+  padding: $space-4 $space-12;
+  border-radius: $radius-pill;
+}
+
+// ─── CONTRIBUTION ────────────────────────────────────────────────────────────
+.contribBlock {
+  display: flex;
+  flex-direction: column;
+  gap: $space-20;
+  margin-bottom: $space-48;
+}
+
+.contribList {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-12 $space-32;
+
+  @include mobile { grid-template-columns: 1fr; }
+
+  li {
+    font-family: $font-body;
+    font-size: 14px;
+    color: $text-secondary;
+    line-height: 1.55;
+    padding-left: $space-16;
+    position: relative;
+
+    &::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: $accent-lavender;
+    }
+  }
+}
+
+// ─── OUTCOME ─────────────────────────────────────────────────────────────────
+.outcomeBar {
+  display: flex;
+  align-items: baseline;
+  gap: $space-20;
+  padding: $space-16 0;
+  border-top: 1px solid rgba($accent-lavender, 0.2);
+  border-bottom: 1px solid rgba($accent-lavender, 0.2);
+  margin-bottom: $space-48;
+
+  @include mobile { flex-direction: column; gap: $space-8; }
+}
+
+.outcomeLabel {
+  font-family: $font-mono;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $accent-lavender;
+  flex-shrink: 0;
+}
+
+.outcomeText {
+  font-family: $font-display;
+  font-size: 20px;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+// ─── PLACEHOLDERS ────────────────────────────────────────────────────────────
+.placeholderGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: $space-16;
+  margin-bottom: $space-48;
+}
+
+.placeholderFrame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: $bg-elevated;
+  border: 1px dashed $border-visible;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $space-8;
+  overflow: hidden;
+}
+
+.phMarker {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.4;
+
+  svg { width: 100%; height: 100%; }
+}
+
+.phBadge {
+  position: relative;
+  font-family: $font-mono;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $accent-icy;
+}
+
+.phLabel {
+  position: relative;
+  font-family: $font-body;
+  font-size: 12px;
+  color: $text-secondary;
+  text-align: center;
+  padding: 0 $space-16;
+}
+
+// ─── REPO LINK ───────────────────────────────────────────────────────────────
+.repoRow {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: $space-24;
+  border-top: 1px solid $border-subtle;
+}
+
+.repoLink {
+  @include link-action;
+  color: $accent-lavender;
+
+  &:hover { color: $accent-lavender-hover; }
+}

@@ -1,0 +1,62 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background-color: $bg-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 300ms $ease-standard;
+
+  &.fading {
+    opacity: 0;
+  }
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.infinitySvg {
+  width: 96px;
+  height: 48px;
+  overflow: visible;
+}
+
+.trackPath {
+  fill: none;
+  stroke: rgba($border-visible, 0.4);
+  stroke-width: 2.5;
+}
+
+.pulsePath {
+  fill: none;
+  stroke: url(#preloader-grad, $accent-lavender);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 260;
+  stroke-dashoffset: 260;
+  animation: drawPulse 800ms $ease-standard forwards;
+}
+
+@keyframes drawPulse {
+  0% {
+    stroke-dashoffset: 260;
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.8;
+  }
+}

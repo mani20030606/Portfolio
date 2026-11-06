@@ -8,8 +8,7 @@
   flex-direction: column;
   padding: calc(56px + #{$space-32}) $grid-margin $space-24;
   overflow: hidden;
-  background-color: #000000;
-  background-image: radial-gradient(circle at 62% 42%, rgba(255, 255, 255, 0.04) 0%, transparent 65%);
+  background: transparent;
 
   @include mobile {
     padding: calc(56px + #{$space-24}) $space-20 $space-32;
@@ -208,18 +207,18 @@
 .portraitArea {
   position: absolute;
   bottom: 0;
-  right: 4%;
-  width: 58%;
-  max-width: 840px;
-  height: 94%;
+  right: 14%;
+  width: 54%;
+  max-width: 800px;
+  height: 92%;
   z-index: 2;
   pointer-events: auto;
   cursor: pointer;
 
   @include mobile {
-    width: 92%;
-    max-width: 420px;
-    height: 60%;
+    width: 90%;
+    max-width: 380px;
+    height: 56%;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -247,7 +246,7 @@
 
 .heroImg {
   object-fit: contain;
-  object-position: right bottom;
+  object-position: center bottom;
   -webkit-mask-image: linear-gradient(to top, transparent 0%, black 7%, black 100%);
   mask-image: linear-gradient(to top, transparent 0%, black 7%, black 100%);
 

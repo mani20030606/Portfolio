@@ -75,7 +75,7 @@ export function LemniscateParticles({ particleCount = 18000 }: LemniscateParticl
     () => ({
       uTime: { value: 0 },
       uPixelRatio: { value: typeof window !== 'undefined' ? Math.min(window.devicePixelRatio, 2) : 1 },
-      uSize: { value: 9.0 },
+      uSize: { value: 12.0 },
     }),
     []
   );

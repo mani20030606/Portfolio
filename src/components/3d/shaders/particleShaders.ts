@@ -15,35 +15,35 @@ export const particleVertexShader = `
   varying float vProgress;
 
   // Monochrome Titanium Starlight Palette: Deep Titanium Grey, Silver, Diamond Core
-  const vec3 colorLeft   = vec3(0.35, 0.35, 0.37);  // deep titanium grey
-  const vec3 colorRight  = vec3(0.55, 0.55, 0.58);  // silver starlight
-  const vec3 colorCenter = vec3(0.95, 0.95, 1.00);  // brilliant diamond-white core
+  const vec3 colorLeft   = vec3(0.55, 0.55, 0.60);  // titanium silver
+  const vec3 colorRight  = vec3(0.80, 0.80, 0.85);  // luminous starlight
+  const vec3 colorCenter = vec3(1.00, 1.00, 1.00);  // brilliant diamond-white core
 
   void main() {
     vProgress = aProgress;
 
-    // Dual gradient blend: Left loop = deep titanium grey, Right loop = silver starlight
+    // Dual gradient blend: Left loop = titanium silver, Right loop = luminous starlight
     float blend = smoothstep(0.0, 1.0, aProgress);
     vec3 baseColor = mix(colorLeft, colorRight, blend);
 
     // Crossing point glows sharp diamond-white
     float centerDist = min(abs(aProgress - 0.5), min(aProgress, 1.0 - aProgress));
-    float centerGlow = 1.0 - smoothstep(0.0, 0.12, centerDist);
-    vColor = mix(baseColor, colorCenter, centerGlow * 0.4);
+    float centerGlow = 1.0 - smoothstep(0.0, 0.14, centerDist);
+    vColor = mix(baseColor, colorCenter, centerGlow * 0.55);
 
     // Subtle rhythmic pulse along orbital velocity
     vec3 pos = position;
-    float pulse = sin(uTime * 1.5 + aRandom * 6.28) * 0.04;
+    float pulse = sin(uTime * 1.5 + aRandom * 6.28) * 0.05;
     pos += aVelocity * pulse;
 
     vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
     gl_Position = projectionMatrix * mvPosition;
 
     // Attenuated point size with pixel ratio cap
-    gl_PointSize = (uSize * aScale * uPixelRatio) * (18.0 / -mvPosition.z);
+    gl_PointSize = (uSize * aScale * uPixelRatio) * (20.0 / -mvPosition.z);
     
-    // Depth fade — capped at 0.35 max alpha to keep the scene atmospheric, not blinding
-    vAlpha = smoothstep(-50.0, -2.0, mvPosition.z) * (0.12 + aRandom * 0.23);
+    // Depth fade — clear, sparkling starlight alpha
+    vAlpha = smoothstep(-50.0, -2.0, mvPosition.z) * (0.32 + aRandom * 0.45);
   }
 `;
 
@@ -60,11 +60,11 @@ export const particleFragmentShader = `
       discard;
     }
 
-    // Soft gaussian falloff — raised power makes the glow tighter and less bloomy
+    // Soft gaussian falloff for radiant particle glow
     float strength = 1.0 - smoothstep(0.0, 0.5, dist);
-    strength = pow(strength, 2.8);
+    strength = pow(strength, 2.2);
 
-    gl_FragColor = vec4(vColor, vAlpha * strength * 0.75);
+    gl_FragColor = vec4(vColor, vAlpha * strength);
   }
 `;
 

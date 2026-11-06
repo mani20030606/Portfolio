@@ -94,27 +94,6 @@ export function Chapter00Beginning() {
         </div>
       </AnimatedContent>
 
-      {/* Bottom-left granite rock foreground */}
-      <AnimatedContent
-        distance={45}
-        direction="vertical"
-        duration={0.9}
-        ease="power3.out"
-        trigger="mount"
-        delay={0.32}
-        className={styles.rockForeground}
-        aria-hidden="true"
-      >
-        <Image
-          src="/assets/photos/hero-granite-rock.png"
-          alt=""
-          width={400}
-          height={240}
-          priority
-          className={styles.rockImg}
-        />
-      </AnimatedContent>
-
       {/* Right vertical technical domain sidebar */}
       <aside className={styles.rightSidebar} aria-label="Core Engineering Domains">
         <div className={styles.sidebarLine} aria-hidden="true" />

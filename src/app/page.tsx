@@ -27,7 +27,8 @@ export default function Home() {
     <>
       <Preloader />
       <Navigation />
-      <CanvasContainer />
+      {/* 3D background loop disabled per user request */}
+      {/* <CanvasContainer /> */}
 
       <main id="main-content">
         <Chapter00Beginning />

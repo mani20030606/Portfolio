@@ -19,6 +19,12 @@ export const skillClusters: SkillCluster[] = [
     skills: ['PyTorch', 'TensorFlow', 'scikit-learn', 'NumPy', 'Pandas'],
   },
   {
+    id: 'programming-languages',
+    name: 'Programming Languages',
+    description: 'Core languages for machine learning, computer vision, systems, and product development',
+    skills: ['Python', 'C++', 'C', 'TypeScript', 'JavaScript', 'SQL'],
+  },
+  {
     id: 'edge-optimization',
     name: 'Optimization & Deployment',
     description: 'Quantization, edge conversion, and latency reduction for embedded targets',

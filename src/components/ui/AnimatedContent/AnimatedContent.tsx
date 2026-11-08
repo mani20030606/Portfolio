@@ -76,7 +76,7 @@ export function AnimatedContent({
   stagger = 0,
   staggerFrom = 'start',
   trigger = 'scroll',
-  once = true,
+  once = false,
   scrub = false,
   disappearAfter = 0,
   disappearDuration = 0.5,
@@ -152,7 +152,7 @@ export function AnimatedContent({
       if (stagger > 0) to.stagger = { each: stagger, from: staggerFrom };
 
       const settle = () => {
-        if (scrub) return;
+        if (scrub || !once) return;
         gsap.set(targets, {
           clearProps: mask ? 'filter,transform,maskImage,webkitMaskImage' : 'filter,transform',
         });
@@ -210,6 +210,7 @@ export function AnimatedContent({
         start,
         once,
         onEnter: () => tl.play(),
+        onEnterBack: once ? undefined : () => tl.play(),
         onLeaveBack: once
           ? undefined
           : () => {

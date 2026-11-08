@@ -1,33 +1,55 @@
+export interface KeyResult {
+  value: string;
+  label: string;
+}
+
 export interface ProjectItem {
   id: string;
+  index: string;
   title: string;
+  listTitle: string;
   subtitle: string;
-  status: 'Complete' | 'In development' | 'Hackathon Project' | 'Repository Available';
+  listTags: string;
+  status: string;
+  badgeText: string;
+  badgeType: 'gold' | 'cyan' | 'neutral' | 'purple';
+  origin: 'huebits' | 'independent';
+  attribution: string;
   isInDevelopment?: boolean;
+  description: string;
   problem: string;
+  approach: string;
   solution: string;
+  outcome: string;
   myContribution: string[];
   stack: string[];
-  verifiedOutcome?: string;
-  repoUrl?: string;
-  imagePlaceholders: {
-    label: string;
-    description: string;
-    path: string;
-  }[];
-  diagramSvgKey: string;
+  keyResults: KeyResult[];
+  iconType: 'cube' | 'road' | 'crosshair' | 'graph';
 }
 
 export const projects: ProjectItem[] = [
   {
     id: 'granite-measurement',
+    index: '01',
     title: 'AI-Powered Granite Measurement System',
-    subtitle: 'Edge Computer Vision & Real-World Metric Scale Estimation',
-    status: 'Complete',
+    listTitle: 'AI-Powered Granite Measurement',
+    subtitle: 'Computer Vision • Mobile AI • Real-World Measurement',
+    listTags: 'Computer Vision • Measurement • Mobile AI',
+    status: 'First Prize',
+    badgeText: 'First Prize — RTGS Hackathon',
+    badgeType: 'purple',
+    origin: 'huebits',
+    attribution: 'Built while working as an intern at Huebits',
+    description:
+      'A mobile-based system that measures granite block dimensions from images, estimates volume, and classifies slabs using computer vision and geometric calibration.',
     problem:
-      'Measuring large, irregular granite blocks in the field traditionally requires manual tape measurements across rough surfaces, leading to human error, safety risks, and operational delays.',
+      'Manual tape measurements across rough, irregular quarry surfaces lead to human error, safety risks, and operational delays.',
+    approach:
+      'ArUco marker calibration, perspective homography, and YOLOv8 paired with MobileSAM for sub-pixel boundary refinement.',
     solution:
-      'An end-to-end mobile and edge vision system that segments block faces, refines boundaries, and estimates metric dimensions in real-time using ArUco homography and multi-face averaging.',
+      'React Native mobile client with offline on-device inference, multi-face dimension averaging, and FastAPI cloud sync.',
+    outcome:
+      'Working prototype tested on field blocks, achieving 95–98% measurement accuracy and awarded First Prize at the RTGS Hackathon.',
     myContribution: [
       'Led the end-to-end engineering of the system during internship at Huebits',
       'Implemented YOLO object segmentation paired with MobileSAM for boundary refinement',
@@ -44,75 +66,112 @@ export const projects: ProjectItem[] = [
       'ArUco',
       'FastAPI',
       'React Native',
-      'TypeScript',
-      'Expo',
-      'Edge AI',
+      'TFLite',
+      'SQLite',
+      'Supabase',
     ],
-    verifiedOutcome: 'Awarded First Prize at the RTGS Hackathon.',
-    imagePlaceholders: [
-      {
-        label: 'Raw Field Block Photo',
-        description: 'Captured quarry block prior to segmentation',
-        path: '/assets/projects/granite/raw-sample.jpg',
-      },
-      {
-        label: 'MobileSAM Refined Segmentation',
-        description: 'Sub-pixel contour boundary mask on block face',
-        path: '/assets/projects/granite/mask-refinement.jpg',
-      },
-      {
-        label: 'ArUco Metric Scaling Overlay',
-        description: 'Real-world homography calibration and dimension lines',
-        path: '/assets/projects/granite/dimension-overlay.jpg',
-      },
-      {
-        label: 'React Native Mobile App UI',
-        description: 'Inspection preview, measurement log, and sync screen',
-        path: '/assets/projects/granite/mobile-app.jpg',
-      },
+    keyResults: [
+      { value: '95–98%', label: 'Measurement Accuracy' },
+      { value: 'Offline', label: 'On-Device Inference' },
+      { value: 'Real-World', label: 'Quarry Testing' },
     ],
-    diagramSvgKey: 'granite-architecture',
+    iconType: 'cube',
   },
   {
     id: 'highway-accident-prevention',
+    index: '02',
     title: 'Highway Road Accident Prevention System',
+    listTitle: 'Highway Road Accident Prevention',
     subtitle: 'Real-Time Edge Hazard & Traffic Object Detection',
-    status: 'In development',
+    listTags: 'Vehicle • Pothole • Road Safety',
+    status: 'Prototype',
+    badgeText: 'Ongoing at Huebits — Prototype',
+    badgeType: 'cyan',
+    origin: 'huebits',
+    attribution: 'Ongoing under Huebits · Internship Project',
     isInDevelopment: true,
+    description:
+      'A multi-class visual detection architecture optimized for real-time edge streaming, safety telemetry, and localized hazard alerts to prevent roadway collisions.',
     problem:
-      'High-speed highway transit demands sub-hundred-millisecond hazard detection for stationary vehicles, pedestrian crossings, and missing signage under diverse lighting conditions.',
+      'High-speed highway transit demands sub-100ms hazard detection for stationary vehicles, pedestrian crossings, and missing signage under diverse lighting conditions.',
+    approach:
+      'Custom vision dataset curation across vehicles, potholes, and obstacles with quantized edge model benchmarking.',
     solution:
-      'A multi-class visual detection architecture optimized for real-time edge streaming, safety telemetry, and localized hazard alerts.',
+      'Low-latency PyTorch YOLO pipeline optimized for vehicle-mounted edge processors with automated spatial alert dispatch.',
+    outcome:
+      'Functional vehicle-edge detection pipeline achieving low-latency inference on road streaming feeds.',
     myContribution: [
-      'Initiated in relation to the HRAP-2026 innovation challenge',
+      'Initiated and developed under Huebits for real-time roadway hazard detection',
       'Curated and annotated custom vision datasets across vehicles, pedestrians, and traffic markers',
       'Designed and benchmarked detection models prioritizing low-latency inference',
       'Explored quantized inference models for vehicle-mounted edge processors',
     ],
-    stack: ['Python', 'PyTorch', 'YOLOv8', 'OpenCV', 'Edge Computing', 'Computer Vision'],
-    imagePlaceholders: [
-      {
-        label: 'Highway Dataset Sample',
-        description: 'Annotated day and night vehicular camera frame',
-        path: '/assets/projects/highway/dataset-sample.jpg',
-      },
-      {
-        label: 'Edge Detection Pipeline',
-        description: 'Multi-class bounding box stream with velocity vectors',
-        path: '/assets/projects/highway/detection-stream.jpg',
-      },
+    stack: ['Python', 'PyTorch', 'YOLOv8', 'OpenCV', 'Edge AI', 'Computer Vision'],
+    keyResults: [
+      { value: '<100ms', label: 'Inference Latency' },
+      { value: 'Edge', label: 'On-Vehicle Vision' },
+      { value: 'Real-Time', label: 'Hazard Alerting' },
     ],
-    diagramSvgKey: 'highway-pipeline',
+    iconType: 'road',
+  },
+  {
+    id: 'weapon-detection',
+    index: '03',
+    title: 'Real-Time Weapon & Threat Detection System',
+    listTitle: 'Firearm Detection',
+    subtitle: 'Edge Vision & Surveillance Anomaly Detection Pipeline',
+    listTags: 'Object Detection • Real-Time • Surveillance',
+    status: 'Deployed',
+    badgeText: 'Personal Project — Deployed',
+    badgeType: 'gold',
+    origin: 'independent',
+    attribution: 'Independent Engineering Project (My Own)',
+    description:
+      'A high-precision edge computer vision pipeline trained to detect multi-class weapons (firearms, cold weapons) in real-time video streams with low latency and minimal false alarms.',
+    problem:
+      'Surveillance feeds in sensitive public and private zones require instantaneous threat detection without reliance on human monitoring fatigue.',
+    approach:
+      'Curated and augmented specialized threat object datasets, spatial bounding boxes, and precision-recall curve tuning.',
+    solution:
+      'Real-time CCTV inference pipeline with edge YOLOv8 processing and automated alert dispatch.',
+    outcome:
+      'Engineered personal project achieving reliable real-time detection on edge camera streams with minimal false alarms.',
+    myContribution: [
+      'Curated and augmented specialized weapon and threat object datasets across varied lighting and angles',
+      'Fine-tuned lightweight YOLOv8 models optimized for low-latency CCTV edge processing',
+      'Implemented automated bounding-box alert dispatch and spatial tracking pipeline',
+      'Evaluated precision-recall curves to minimize false positive triggers in crowded environments',
+    ],
+    stack: ['Python', 'PyTorch', 'YOLOv8', 'OpenCV', 'Edge AI', 'Computer Vision'],
+    keyResults: [
+      { value: 'Real-Time', label: 'Surveillance Stream' },
+      { value: 'Multi-Class', label: 'Threat Objects' },
+      { value: 'Edge AI', label: 'YOLOv8 Processing' },
+    ],
+    iconType: 'crosshair',
   },
   {
     id: 'hybrid-graphrag',
-    title: 'Hybrid GraphRAG Intelligence System',
+    index: '04',
+    title: 'GraphRAG Knowledge System',
+    listTitle: 'GraphRAG',
     subtitle: 'Knowledge Graph & Vector-Augmented Retrieval Engine',
-    status: 'Repository Available',
+    listTags: 'Knowledge Graph • RAG • Semantic Search',
+    status: 'In Progress',
+    badgeText: 'Independent Project — In Progress',
+    badgeType: 'neutral',
+    origin: 'independent',
+    attribution: 'Independent Engineering Project (My Own)',
+    description:
+      'A hybrid architecture combining Neo4j graph traversal with ChromaDB vector embeddings and lightweight LLM synthesis for context-rich answers.',
     problem:
       'Pure vector-based RAG engines struggle with multi-hop questions and entity relationship traversal across dense technical corpora.',
+    approach:
+      'Dual-engine retrieval uniting Neo4j graph schemas and ChromaDB dense vector indexing with sentence-transformer embeddings.',
     solution:
-      'A hybrid architecture combining Neo4j graph traversal with ChromaDB vector embeddings and lightweight LLM synthesis for context-rich answers.',
+      'Streamlit interactive workbench with entity-relationship extraction pipeline and structured LLM reasoning synthesis.',
+    outcome:
+      'Open-source repository available on GitHub with documented retrieval benchmarks across multi-hop technical queries.',
     myContribution: [
       'Architected hybrid retrieval combining Neo4j graph nodes and ChromaDB vector embeddings',
       'Integrated all-MiniLM-L6-v2 sentence embeddings for dense document chunk indexing',
@@ -127,57 +186,11 @@ export const projects: ProjectItem[] = [
       'LangChain',
       'Streamlit',
     ],
-    repoUrl: 'https://github.com/mani20030606/Hybrid_RAG',
-    imagePlaceholders: [
-      {
-        label: 'Knowledge Graph Visualization',
-        description: 'Extracted entity relationship clusters and cross-links',
-        path: '/assets/projects/rag/graph-visualization.jpg',
-      },
-      {
-        label: 'Streamlit Query Interface',
-        description: 'Side-by-side vector vs graph retrieval breakdown',
-        path: '/assets/projects/rag/streamlit-ui.jpg',
-      },
+    keyResults: [
+      { value: 'Hybrid', label: 'Neo4j + Chroma' },
+      { value: 'Multi-Hop', label: 'Graph Traversal' },
+      { value: 'Dense', label: 'Vector Embeddings' },
     ],
-    diagramSvgKey: 'graphrag-architecture',
-  },
-  {
-    id: 'careerpilot-ai',
-    title: 'CareerPilot AI',
-    subtitle: 'Autonomous Career Copilot & Technical Gap Analyzer',
-    status: 'Hackathon Project',
-    problem:
-      'Engineers lack objective, feedback-driven breakdowns of their skill readiness and clear project pathways to bridge career requirements.',
-    solution:
-      'An intelligent copilot that ingests technical resumes, parses role requirements, isolates skill deficits, and drafts personalized interview simulations.',
-    myContribution: [
-      'Engineered resume text parsing and structured skill-gap analysis pipeline',
-      'Integrated LLM reasoning for customized learning roadmap generation',
-      'Built backend API services with FastAPI and connected interactive frontend interface',
-      'Demonstrated prototype at the Product Space × Wispr Flow AI Hackathon',
-    ],
-    stack: [
-      'React',
-      'TypeScript',
-      'FastAPI',
-      'Python',
-      'Gemini 1.5 Flash',
-      'GPT-4o-mini',
-    ],
-    verifiedOutcome: 'Demonstrated at the AI Hackathon by Product Space with Wispr Flow.',
-    imagePlaceholders: [
-      {
-        label: 'Skill Gap Matrix UI',
-        description: 'Categorized technical proficiencies vs target role specs',
-        path: '/assets/projects/careerpilot/gap-matrix.jpg',
-      },
-      {
-        label: 'AI Mock Interview Session',
-        description: 'Dynamic conversational prompt with real-time rubric evaluation',
-        path: '/assets/projects/careerpilot/interview-view.jpg',
-      },
-    ],
-    diagramSvgKey: 'careerpilot-workflow',
+    iconType: 'graph',
   },
 ];

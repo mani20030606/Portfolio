@@ -95,20 +95,36 @@
   width: 100%;
   overflow: hidden;
   outline: 1px solid rgba(255, 255, 255, 0.08);
-  transition: box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), outline 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scale(1);
+  transform-origin: center center;
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    outline 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow, filter;
 }
 
 .circular-carousel__card:hover .circular-carousel__frame {
-  outline: 1.5px solid rgba(255, 255, 255, 0.65);
-  box-shadow: 0 0 28px rgba(255, 255, 255, 0.35), 0 12px 36px rgba(0, 0, 0, 0.7);
-  filter: brightness(1.12);
+  transform: scale(1.065);
+  outline: 1.5px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 0 32px rgba(255, 255, 255, 0.4), 0 14px 44px rgba(0, 0, 0, 0.8);
+  filter: brightness(1.14);
 }
 
 .circular-carousel__card[data-active] .circular-carousel__frame,
 .circular-carousel__card--active .circular-carousel__frame {
+  transform: scale(1.04);
   outline: 2px solid #FFFFFF;
   box-shadow: 0 0 36px rgba(255, 255, 255, 0.55), 0 16px 48px rgba(0, 0, 0, 0.85);
   filter: brightness(1.16);
+}
+
+.circular-carousel__card[data-active]:hover .circular-carousel__frame,
+.circular-carousel__card--active:hover .circular-carousel__frame {
+  transform: scale(1.09);
+  box-shadow: 0 0 44px rgba(255, 255, 255, 0.7), 0 20px 60px rgba(0, 0, 0, 0.95);
+  filter: brightness(1.2);
 }
 
 .circular-carousel__photo {

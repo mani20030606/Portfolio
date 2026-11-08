@@ -4,8 +4,14 @@
 .section {
   @include section-rule;
   padding-top: $section-spacing-desktop;
+  padding-bottom: $section-spacing-desktop;
+  position: relative;
+  background: $bg-primary;
 
-  @include mobile { padding-top: $section-spacing-mobile; }
+  @include mobile {
+    padding-top: $section-spacing-mobile;
+    padding-bottom: $section-spacing-mobile;
+  }
 }
 
 .inner {
@@ -14,24 +20,39 @@
 
 // ─── SECTION HEADER ──────────────────────────────────────────────────────────
 .sectionHeader {
-  margin-bottom: $space-96;
+  margin-bottom: $space-48;
 
-  @include mobile { margin-bottom: $space-64; }
+  @include mobile {
+    margin-bottom: $space-32;
+  }
+}
+
+.headerTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: $space-48;
+
+  @include mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $space-20;
+  }
 }
 
 .sectionMeta {
   display: flex;
   align-items: center;
   gap: $space-16;
-  margin-bottom: $space-24;
+  margin-bottom: $space-16;
 }
 
 .sectionNum {
   font-family: $font-mono;
   font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  color: $accent-lavender;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #FFFFFF;
 }
 
 .sectionName {
@@ -46,253 +67,477 @@
 .heading {
   @include type-chapter-title;
   color: $text-primary;
-  margin-bottom: $space-24;
 }
 
 .sub {
   font-family: $font-body;
-  font-size: 15px;
+  font-size: 14.5px;
   color: $text-secondary;
   line-height: 1.6;
-  max-width: 56ch;
+  max-width: 52ch;
 }
 
-// ─── PROJECT ─────────────────────────────────────────────────────────────────
-.project {
-  padding-bottom: $section-spacing-desktop;
-  border-top: 1px solid $border-visible;
-
-  @include mobile { padding-bottom: $section-spacing-mobile; }
+// ─── SHOWCASE SPLIT-PANEL CONTAINER ──────────────────────────────────────────
+.showcaseContainer {
+  @include page-container;
 }
 
-.projectBar {
-  padding: $space-24 0;
-  border-bottom: 1px solid $border-subtle;
-  margin-bottom: $space-40;
+.showcaseInner {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: $space-24;
+  align-items: start;
+
+  @include mobile {
+    display: flex;
+    flex-direction: column-reverse; // Place project selector on top on mobile
+    gap: $space-24;
+  }
 }
 
-.projectBarLeft {
+// ══════════════════════════════════════════════════════════════════════════════
+// LEFT PANEL: SELECTED PROJECT DETAILS (~60%)
+// ══════════════════════════════════════════════════════════════════════════════
+.leftPanel {
+  background: #0B0B0B;
+  border: 1px solid #222222;
+  border-radius: $radius-card;
+  padding: $space-24 $space-24;
+  position: relative;
+  max-height: min(600px, calc(100vh - 180px));
+  overflow-y: auto;
+  transition: all 0.2s $ease-standard;
+  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 4px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.35);
+    }
+  }
+
+  @include mobile {
+    padding: $space-20;
+    max-height: 520px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.85;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.panelTopBar {
   display: flex;
   align-items: center;
-  gap: $space-16;
-  margin-bottom: $space-12;
+  justify-content: space-between;
+  margin-bottom: $space-16;
 }
 
-.projectIndex {
+.indexCount {
   font-family: $font-mono;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  color: $accent-icy;
-}
-
-.inDevBadge {
-  font-family: $font-mono;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.10em;
-  text-transform: uppercase;
-  color: #E0E0E0;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: $space-4 $space-12;
-  border-radius: $radius-pill;
+  letter-spacing: 0.1em;
+  color: #FFFFFF;
+}
+
+.indexMuted {
+  color: #555555;
+  font-weight: 400;
+}
+
+// Title Section
+.titleSection {
+  margin-bottom: $space-16;
 }
 
 .projectTitle {
-  @include type-section;
-  color: $text-primary;
+  font-family: $font-display;
+  font-size: clamp(22px, 2.2vw, 28px);
+  font-weight: 700;
+  line-height: 1.25;
+  color: #FFFFFF;
+  margin-bottom: $space-8;
 }
 
 .projectSubtitle {
   font-family: $font-body;
-  font-size: clamp(16px, 1.4vw, 20px);
-  color: $accent-icy;
-  font-weight: 400;
-  margin-bottom: $space-48;
-  max-width: 60ch;
+  font-size: 13.5px;
+  color: #8E8E8E;
+  margin-bottom: $space-12;
 }
 
-// ─── GRID ────────────────────────────────────────────────────────────────────
-.projectGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: $space-48;
-  padding: $space-40 0;
-  border-top: 1px solid $border-subtle;
-  border-bottom: 1px solid $border-subtle;
-  margin-bottom: $space-48;
-
-  @include mobile {
-    grid-template-columns: 1fr;
-    gap: $space-32;
-  }
-}
-
-.projectBlock {
-  display: flex;
-  flex-direction: column;
-  gap: $space-16;
-}
-
-.blockLabel {
-  font-family: $font-mono;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: $accent-lavender;
-}
-
-.blockText {
-  font-family: $font-body;
-  font-size: 14px;
-  color: $text-secondary;
-  line-height: 1.65;
-  max-width: 52ch;
-}
-
-.stackRow {
-  display: flex;
-  flex-wrap: wrap;
+// Attribution Badges
+.attributionHuebits {
+  display: inline-flex;
+  align-items: center;
   gap: $space-8;
-}
-
-.techTag {
-  font-family: $font-mono;
-  font-size: 11px;
-  color: $text-secondary;
-  background: $bg-elevated;
-  border: 1px solid $border-subtle;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   padding: $space-4 $space-12;
   border-radius: $radius-pill;
-}
-
-// ─── CONTRIBUTION ────────────────────────────────────────────────────────────
-.contribBlock {
-  display: flex;
-  flex-direction: column;
-  gap: $space-20;
-  margin-bottom: $space-48;
-}
-
-.contribList {
-  list-style: none;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: $space-12 $space-32;
-
-  @include mobile { grid-template-columns: 1fr; }
-
-  li {
-    font-family: $font-body;
-    font-size: 14px;
-    color: $text-secondary;
-    line-height: 1.55;
-    padding-left: $space-16;
-    position: relative;
-
-    &::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: $accent-lavender;
-    }
-  }
-}
-
-// ─── OUTCOME ─────────────────────────────────────────────────────────────────
-.outcomeBar {
-  display: flex;
-  align-items: baseline;
-  gap: $space-20;
-  padding: $space-16 0;
-  border-top: 1px solid rgba($accent-lavender, 0.2);
-  border-bottom: 1px solid rgba($accent-lavender, 0.2);
-  margin-bottom: $space-48;
-
-  @include mobile { flex-direction: column; gap: $space-8; }
-}
-
-.outcomeLabel {
   font-family: $font-mono;
-  font-size: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.attributionIndependent {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-8;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: $space-4 $space-12;
+  border-radius: $radius-pill;
+  font-family: $font-mono;
+  font-size: 11px;
   font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: $accent-lavender;
+  color: #A3A3A3;
+}
+
+.attributionDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
   flex-shrink: 0;
 }
 
-.outcomeText {
-  font-family: $font-display;
-  font-size: 20px;
-  font-weight: 600;
-  color: $text-primary;
+.projectDescription {
+  font-family: $font-body;
+  font-size: 14px;
+  color: #D4D4D4;
+  line-height: 1.65;
+  margin-bottom: $space-24;
+  padding-bottom: $space-20;
+  border-bottom: 1px solid #1C1C1C;
 }
 
-// ─── PLACEHOLDERS ────────────────────────────────────────────────────────────
-.placeholderGrid {
+// Details Grid inside Left Panel
+.detailsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: $space-16;
-  margin-bottom: $space-48;
+  grid-template-columns: 1.15fr 1fr;
+  gap: $space-24;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $space-20;
+  }
 }
 
-.placeholderFrame {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  background: $bg-elevated;
-  border: 1px dashed $border-visible;
+// Left Sub-Column: Specifications
+.specsColumn {
+  display: flex;
+  flex-direction: column;
+  gap: $space-16;
+}
+
+.specRow {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-12;
+}
+
+.specIconBox {
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-sm;
+  background: #141414;
+  border: 1px solid #242424;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #B5B5B5;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.specContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.specLabel {
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.specText {
+  font-family: $font-body;
+  font-size: 12.5px;
+  color: #9C9C9C;
+  line-height: 1.55;
+}
+
+// Right Sub-Column: Tech Stack & Results
+.rightSubColumn {
+  display: flex;
+  flex-direction: column;
+  gap: $space-24;
+}
+
+.subBlockTitle {
+  font-family: $font-mono;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #FFFFFF;
+  margin-bottom: $space-12;
+}
+
+.stackPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-6;
+}
+
+.techPill {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-6;
+  background: #141414;
+  border: 1px solid #262626;
+  border-radius: $radius-pill;
+  padding: $space-4 $space-12;
+  font-family: $font-mono;
+  font-size: 11.5px;
+  color: #E2E2E2;
+  transition: all $duration-fast ease;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.35);
+    background: #1C1C1C;
+    color: #FFFFFF;
+  }
+}
+
+.techLogo {
+  flex-shrink: 0;
+}
+
+// Key Results Stats
+.resultsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-8;
+
+  @include mobile {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.resultBox {
+  background: #121212;
+  border: 1px solid #242424;
+  border-radius: $radius-button;
+  padding: $space-12 $space-8;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: $space-8;
-  overflow: hidden;
+  text-align: center;
+  gap: 4px;
 }
 
-.phMarker {
-  position: absolute;
-  inset: 0;
+.resultValue {
+  font-family: $font-display;
+  font-size: 16px;
+  font-weight: 700;
+  color: #D8B4FE;
+  letter-spacing: -0.02em;
+}
+
+.resultLabel {
+  font-family: $font-mono;
+  font-size: 10px;
+  color: #8E8E8E;
+  line-height: 1.3;
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// RIGHT PANEL: PROJECT SELECTOR LIST (~40%)
+// ══════════════════════════════════════════════════════════════════════════════
+.rightPanel {
+  display: flex;
+  flex-direction: column;
+  gap: $space-12;
+  position: sticky;
+  top: 100px;
+}
+
+.listHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: $space-8;
+}
+
+.listHeaderTitle {
+  display: flex;
+  align-items: center;
+  gap: $space-8;
+}
+
+.projectsTitle {
+  font-family: $font-display;
+  font-size: 16px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.projectsCount {
+  font-family: $font-mono;
+  font-size: 10px;
+  font-weight: 700;
+  color: #B5B5B5;
+  background: #181818;
+  border: 1px solid #282828;
+  padding: 2px $space-8;
+  border-radius: $radius-pill;
+}
+
+.listHelper {
+  font-family: $font-mono;
+  font-size: 11px;
+  color: #666666;
+}
+
+.projectsList {
+  display: flex;
+  flex-direction: column;
+  gap: $space-12;
+}
+
+// Project Item Card
+.projectItem {
+  background: #0B0B0B;
+  border: 1px solid #1E1E1E;
+  border-radius: $radius-card;
+  padding: $space-16 $space-20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-16;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.25s $ease-standard;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:hover {
+    background: #131313;
+    border-color: rgba(255, 255, 255, 0.28);
+    transform: translateY(-2px);
+  }
+
+  // Active Selected State
+  &.projectItemSelected {
+    background: #110E18;
+    border-color: #8B5CF6;
+    box-shadow: 0 0 24px rgba(139, 92, 246, 0.18);
+    outline: none;
+
+    &:focus,
+    &:focus-visible {
+      outline: none;
+    }
+
+    .itemIndex {
+      color: #D8B4FE;
+    }
+
+    .itemTitle {
+      color: #FFFFFF;
+    }
+
+    .itemIconBox {
+      border-color: rgba(139, 92, 246, 0.4);
+      color: #D8B4FE;
+      background: rgba(139, 92, 246, 0.12);
+    }
+  }
+
+  @include mobile {
+    padding: $space-12 $space-16;
+  }
+}
+
+.itemLeft {
+  display: flex;
+  align-items: center;
+  gap: $space-16;
+}
+
+.itemIndex {
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #666666;
+  transition: color $duration-fast ease;
+}
+
+.itemIconBox {
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-sm;
+  background: #141414;
+  border: 1px solid #242424;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.4;
-
-  svg { width: 100%; height: 100%; }
+  color: #A3A3A3;
+  flex-shrink: 0;
+  transition: all $duration-fast ease;
 }
 
-.phBadge {
-  position: relative;
-  font-family: $font-mono;
-  font-size: 9px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: $accent-icy;
-}
-
-.phLabel {
-  position: relative;
-  font-family: $font-body;
-  font-size: 12px;
-  color: $text-secondary;
-  text-align: center;
-  padding: 0 $space-16;
-}
-
-// ─── REPO LINK ───────────────────────────────────────────────────────────────
-.repoRow {
+.itemInfo {
   display: flex;
-  justify-content: flex-end;
-  padding-top: $space-24;
-  border-top: 1px solid $border-subtle;
+  flex-direction: column;
+  gap: 3px;
 }
 
-.repoLink {
-  @include link-action;
-  color: $accent-lavender;
+.itemTitle {
+  font-family: $font-display;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #E2E2E2;
+  line-height: 1.3;
+  transition: color $duration-fast ease;
+}
 
-  &:hover { color: $accent-lavender-hover; }
+.itemTags {
+  font-family: $font-mono;
+  font-size: 11px;
+  color: #737373;
 }

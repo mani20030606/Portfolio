@@ -12,6 +12,7 @@ import { Chapter03Mind } from '@/components/chapters/03-Mind/Chapter03Mind';
 import { Chapter04Builds } from '@/components/chapters/04-Builds/Chapter04Builds';
 import { Chapter05Impact } from '@/components/chapters/05-Impact/Chapter05Impact';
 import { Chapter07Connect } from '@/components/chapters/07-Connect/Chapter07Connect';
+import { TechLogoLoop } from '@/components/ui/TechLogoLoop/TechLogoLoop';
 import { initSmoothScroll, destroySmoothScroll } from '@/lib/animation/lenis';
 
 export default function Home() {
@@ -38,6 +39,7 @@ export default function Home() {
         <Chapter04Builds />
         <Chapter05Impact />
         <Chapter07Connect />
+        <TechLogoLoop />
       </main>
     </>
   );

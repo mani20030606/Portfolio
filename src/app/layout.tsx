@@ -11,7 +11,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: 'Mani Saideep Chintha — portfolio',
+  title: 'Mani Saideep Chintha | AI Engineer & Intelligent Systems |Deep Learning-Computer Vision',
   description:
     'AI/ML Engineer · Computer Vision Developer · AI Product Builder. Turning curiosity into working systems. Open to Work.',
   keywords: [
@@ -26,8 +26,16 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Mani Saideep Chintha' }],
   metadataBase: new URL('https://manisaideep.dev'),
+  icons: {
+    icon: [
+      { url: '/Golden%20Infinity%20Ribbon%20Logo.png', type: 'image/png' },
+      { url: '/icon.png', type: 'image/png' },
+    ],
+    shortcut: '/Golden%20Infinity%20Ribbon%20Logo.png',
+    apple: '/Golden%20Infinity%20Ribbon%20Logo.png',
+  },
   openGraph: {
-    title: 'Mani Saideep Chintha — The Infinite Builder',
+    title: '∞ Mani Saideep Chintha | Building Intelligent Systems',
     description:
       'AI/ML Engineer · Computer Vision Developer. I turn curiosity into working systems. Open to Work.',
     type: 'website',

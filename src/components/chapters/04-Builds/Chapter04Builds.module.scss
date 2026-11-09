@@ -330,6 +330,7 @@
 
   @include mobile {
     grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
   }
 }
 
@@ -349,6 +350,10 @@
   &:hover {
     border-color: rgba(197, 197, 197, 0.4);
   }
+
+  @include mobile {
+    padding: 6px 3px;
+  }
 }
 
 .resultValue {
@@ -357,6 +362,10 @@
   font-weight: 700;
   color: #C5C5C5;
   letter-spacing: -0.02em;
+
+  @include mobile {
+    font-size: 13px;
+  }
 }
 
 .resultValueGold {
@@ -366,6 +375,10 @@
   color: #D6B46A;
   letter-spacing: -0.02em;
   text-shadow: 0 0 12px rgba(214, 180, 106, 0.25);
+
+  @include mobile {
+    font-size: 13px;
+  }
 }
 
 .resultLabel {
@@ -373,6 +386,10 @@
   font-size: 9.5px;
   color: #999999;
   line-height: 1.25;
+
+  @include mobile {
+    font-size: 8.5px;
+  }
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
@@ -384,6 +401,11 @@
   gap: $space-12;
   position: sticky;
   top: 100px;
+
+  @include mobile {
+    position: static;
+    top: auto;
+  }
 }
 
 .listHeader {

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import styles from './Navigation.module.scss';
 import PillNav, { type PillNavItem } from '@/components/ui/PillNav/PillNav';
 import { links } from '@/content/links';
@@ -93,18 +94,14 @@ export function Navigation() {
         <div className={styles.navContainer}>
           {/* Brand Left: Infinity Icon + MANI SAIDEEP CHINTHA with wide gap to right */}
           <a href="#beginning" className={styles.brand} aria-label="Mani Saideep Chintha — Home">
-            <svg
-              viewBox="0 0 28 14"
+            <Image
+              src="/Golden%20Infinity%20Ribbon%20Logo.png"
+              alt="Golden Infinity Ribbon"
+              width={64}
+              height={42}
               className={styles.infinityIcon}
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M 7,7 C 7,3.5 10.5,3.5 14,7 C 17.5,10.5 21,10.5 21,7 C 21,3.5 17.5,3.5 14,7 C 10.5,10.5 7,10.5 7,7 Z" />
-            </svg>
+              priority
+            />
             <span className={styles.brandName}>MANI SAIDEEP CHINTHA</span>
           </a>
 
@@ -137,27 +134,86 @@ export function Navigation() {
               collapse="auto"
             />
           </div>
+
+          {/* Mobile Hamburger Toggle Button */}
+          <button
+            type="button"
+            className={`${styles.mobileToggleBtn} ${mobileMenuOpen ? styles.open : ''}`}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileMenuOpen}
+          >
+            <span className={styles.hamburgerLine} />
+            <span className={styles.hamburgerLine} />
+          </button>
         </div>
       </header>
 
-      {/* Fallback Mobile Drawer Navigation */}
+      {/* Luxury Mobile Drawer Navigation */}
       {mobileMenuOpen && (
         <div className={styles.mobileOverlay} role="dialog" aria-modal="true">
+          <div className={styles.mobileDrawerHeader}>
+            <div className={styles.drawerBrand}>
+              <Image
+                src="/Golden%20Infinity%20Ribbon%20Logo.png"
+                alt="Golden Infinity Ribbon"
+                width={40}
+                height={26}
+                className={styles.infinityIcon}
+              />
+              <span className={styles.drawerBrandName}>MANI SAIDEEP</span>
+            </div>
+            <button
+              type="button"
+              className={styles.drawerCloseBtn}
+              onClick={() => setMobileMenuOpen(false)}
+              aria-label="Close navigation menu"
+            >
+              ✕
+            </button>
+          </div>
+
           <div className={styles.mobileDrawer}>
             <nav className={styles.mobileNav} aria-label="Mobile Navigation">
-              {navLinks.map((item) => (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  className={`${styles.mobileLink} ${
-                    activeSection === item.id ? styles.active : ''
-                  }`}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <span className={styles.mobileName}>{item.name}</span>
-                </a>
-              ))}
+              {navLinks.map((item) => {
+                const isActive = activeSection === item.id;
+                return (
+                  <a
+                    key={item.id}
+                    href={`#${item.id}`}
+                    className={`${styles.mobileLink} ${isActive ? styles.active : ''}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setMobileMenuOpen(false);
+                      const el = document.getElementById(item.id);
+                      if (el) {
+                        const lenis = getLenis();
+                        if (lenis) {
+                          lenis.scrollTo(el, { offset: -60, duration: 1.2 });
+                        } else {
+                          el.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      }
+                    }}
+                  >
+                    <span className={styles.mobileName}>{item.name}</span>
+                    {isActive && <span className={styles.activeDot} aria-hidden="true" />}
+                  </a>
+                );
+              })}
             </nav>
+
+            {/* Glowing Champagne Resume Button */}
+            <a
+              href="/assets/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.mobileResumeBtn}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <span>RESUME</span>
+              <span className={styles.btnArrow}>↗</span>
+            </a>
 
             <div className={styles.mobileSocials}>
               {links.github && (

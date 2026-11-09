@@ -64,7 +64,14 @@ export function Chapter05Impact() {
             <span className={styles.sectionName}>Achievements</span>
           </div>
           <h2 className={styles.heading}>
-            <ShinyText color="#D8D8D8" shineColor="#FFFFFF" speed={3.0} glow={0.25} angle={120}>
+            <ShinyText
+              color="#D6B46A"
+              shineColor="#FFF4D4"
+              speed={2.8}
+              glow={0.35}
+              angle={120}
+              className={styles.goldHeading}
+            >
               Achievements
             </ShinyText>
           </h2>

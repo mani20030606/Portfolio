@@ -57,6 +57,12 @@
   margin-bottom: $space-12;
 }
 
+.goldHeading {
+  color: #D6B46A;
+  text-shadow: 0 0 24px rgba(214, 180, 106, 0.35);
+  display: inline-block;
+}
+
 .subtitle {
   font-family: $font-body;
   font-size: 14.5px;

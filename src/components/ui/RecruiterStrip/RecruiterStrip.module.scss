@@ -10,6 +10,11 @@
   background: $bg-primary;
   border-bottom: 1px solid $border-subtle;
   padding: $space-8 0;
+
+  @include mobile {
+    position: relative;
+    top: 0;
+  }
 }
 
 .container {
@@ -65,12 +70,33 @@
   font-family: $font-body;
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.10em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: $accent-lavender;
+  color: #F3D58A;
+  background: rgba(214, 180, 106, 0.08);
+  border: 1px solid rgba(214, 180, 106, 0.45);
+  padding: 5px 14px;
+  border-radius: 9999px;
+  box-shadow: 0 0 14px rgba(214, 180, 106, 0.25), inset 0 0 8px rgba(214, 180, 106, 0.08);
   margin-left: auto;
   flex-shrink: 0;
-  transition: color $duration-fast $ease-standard;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  transition: all $duration-fast $ease-standard;
 
-  &:hover { color: $accent-lavender-hover; }
+  &:hover {
+    color: #FFFFFF;
+    background: rgba(214, 180, 106, 0.22);
+    border-color: rgba(243, 213, 138, 0.9);
+    box-shadow: 0 0 22px rgba(214, 180, 106, 0.6), inset 0 0 10px rgba(214, 180, 106, 0.2);
+    transform: translateY(-1px);
+  }
+
+  @include reduced-motion {
+    &:hover {
+      transform: none;
+    }
+  }
 }

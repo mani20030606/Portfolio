@@ -36,9 +36,27 @@ export function Chapter01Person() {
             </div>
 
             <h2 className={styles.heading}>
+              <span className={styles.line1}>
+                <ShinyText
+                  color="#D6B46A"
+                  shineColor="#FFF4D4"
+                  speed={2.8}
+                  glow={0.35}
+                  angle={120}
+                  className={styles.goldWord}
+                >
+                  Building
+                </ShinyText>
+                <ShinyText color="#D8D8D8" shineColor="#FFFFFF" speed={3.2} glow={0.25} angle={120}>
+                  systems that
+                </ShinyText>
+              </span>
+              <br />
               <ShinyText color="#D8D8D8" shineColor="#FFFFFF" speed={3.2} glow={0.25} angle={120}>
-                Building systems that<br />
-                connect algorithms<br />
+                connect algorithms
+              </ShinyText>
+              <br />
+              <ShinyText color="#D8D8D8" shineColor="#FFFFFF" speed={3.2} glow={0.25} angle={120}>
                 to reality.
               </ShinyText>
             </h2>

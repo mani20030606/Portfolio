@@ -30,6 +30,11 @@
 .portraitCol {
   position: sticky;
   top: calc(56px + #{$space-40});
+
+  @include mobile {
+    position: relative;
+    top: 0;
+  }
 }
 
 .portraitFrame {
@@ -83,6 +88,18 @@
 .heading {
   @include type-chapter-title;
   color: $text-primary;
+}
+
+.line1 {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.32em;
+}
+
+.goldWord {
+  color: #D6B46A;
+  text-shadow: 0 0 24px rgba(214, 180, 106, 0.35);
+  display: inline-block;
 }
 
 // ─── FACTS TABLE ─────────────────────────────────────────────────────────────

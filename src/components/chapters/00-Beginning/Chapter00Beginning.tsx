@@ -33,8 +33,8 @@ export function Chapter00Beginning() {
             <br />
             <span className={styles.headlineLine2}>
               <ShinyText
-                color="#C0C0C0"
-                shineColor="#FFFFFF"
+                color="#D6B46A"
+                shineColor="#FFF4D4"
                 speed={2.2}
                 shineWidth={70}
                 softness={0.6}

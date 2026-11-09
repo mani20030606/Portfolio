@@ -47,21 +47,38 @@
   transition: opacity $duration-fast $ease-standard;
 
   &:hover {
-    opacity: 0.85;
+    opacity: 0.95;
 
     .infinityIcon {
-      transform: rotate(360deg);
+      transform: scale(1.08);
+      filter: drop-shadow(0 0 10px rgba(243, 213, 138, 0.8));
+    }
+  }
+
+  @include mobile {
+    gap: $space-8;
+
+    .infinityIcon {
+      width: 42px;
+      height: 28px;
+    }
+
+    .brandName {
+      font-size: 11px;
+      letter-spacing: 0.12em;
     }
   }
 }
 
 .infinityIcon {
-  width: 22px;
-  height: 12px;
-  stroke: #FFFFFF;
+  width: 60px;
+  height: 40px;
+  object-fit: contain;
   flex-shrink: 0;
   display: block;
-  transition: transform 0.8s cubic-bezier(0.65, 0, 0.25, 1);
+  filter: drop-shadow(0 0 10px rgba(214, 180, 106, 0.6));
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              filter 0.4s ease;
 }
 
 .brandName {
@@ -79,37 +96,147 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+
+  @include mobile {
+    display: none;
+  }
 }
 
-// ─── MOBILE DRAWER (FALLBACK) ────────────────────────────────────────────────
+// ─── MOBILE HAMBURGER BUTTON ─────────────────────────────────────────────────
+.mobileToggleBtn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s $ease-standard;
+
+  &:hover,
+  &:active {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(214, 180, 106, 0.5);
+  }
+
+  @include mobile {
+    display: flex;
+  }
+}
+
+.hamburgerLine {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #FFFFFF;
+  border-radius: 2px;
+  transition: transform 0.25s $ease-standard, opacity 0.25s ease, width 0.25s ease;
+
+  &:nth-child(2) {
+    width: 14px;
+    align-self: flex-end;
+  }
+
+  .mobileToggleBtn.open & {
+    &:nth-child(1) {
+      transform: translateY(3.5px) rotate(45deg);
+    }
+    &:nth-child(2) {
+      width: 20px;
+      transform: translateY(-3.5px) rotate(-45deg);
+    }
+  }
+}
+
+// ─── MOBILE DRAWER (LUXURY OVERLAY) ──────────────────────────────────────────
 .mobileOverlay {
   position: fixed;
   inset: 0;
-  z-index: 999;
-  background: #000000;
+  z-index: 1001;
+  background: rgba(4, 4, 4, 0.96);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   display: flex;
   flex-direction: column;
+  padding: $space-20 $space-24 $space-32;
+  overflow-y: auto;
+  animation: fadeIn 0.25s $ease-standard forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.99); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.mobileDrawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: $space-24;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.drawerBrand {
+  display: flex;
+  align-items: center;
+  gap: $space-8;
+}
+
+.drawerBrandName {
+  font-family: $font-body;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+.drawerCloseBtn {
+  display: flex;
+  align-items: center;
   justify-content: center;
-  padding: 0 $space-32;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover,
+  &:active {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: #D6B46A;
+    color: #D6B46A;
+  }
 }
 
 .mobileDrawer {
   display: flex;
   flex-direction: column;
-  gap: $space-48;
+  gap: $space-24;
+  margin-top: $space-20;
 }
 
 .mobileNav {
   display: flex;
   flex-direction: column;
-  gap: $space-12;
+  gap: $space-4;
 }
 
 .mobileLink {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: $space-12 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   text-decoration: none;
   transition: color $duration-fast $ease-standard;
 
@@ -120,20 +247,63 @@
 
 .mobileName {
   font-family: $font-display;
-  font-size: 26px;
-  font-weight: 700;
-  color: #CCCCCC;
+  font-size: 22px;
+  font-weight: 600;
+  color: #A0A0A0;
+  letter-spacing: -0.01em;
 
   .mobileLink.active & {
     color: #FFFFFF;
   }
 }
 
+.activeDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #D6B46A;
+  box-shadow: 0 0 10px rgba(214, 180, 106, 0.85);
+}
+
+.mobileResumeBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 46px;
+  border-radius: 8px;
+  background: rgba(214, 180, 106, 0.08);
+  border: 1px solid rgba(214, 180, 106, 0.45);
+  color: #D6B46A;
+  font-family: $font-mono;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 0 14px rgba(214, 180, 106, 0.2);
+  transition: all 0.25s $ease-standard;
+
+  &:hover,
+  &:active {
+    background: rgba(214, 180, 106, 0.18);
+    border-color: #D6B46A;
+    box-shadow: 0 0 22px rgba(214, 180, 106, 0.4);
+  }
+}
+
+.btnArrow {
+  font-size: 14px;
+}
+
 .mobileSocials {
   display: flex;
-  gap: $space-24;
+  gap: $space-20;
+  padding-top: $space-8;
 }
 
 .socialLink {
   @include link-action;
+  font-size: 11px;
 }

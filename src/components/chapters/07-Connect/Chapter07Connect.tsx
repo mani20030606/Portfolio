@@ -97,23 +97,6 @@ export function Chapter07Connect() {
         </svg>
       ),
     },
-    {
-      title: 'Kaggle',
-      subtitle: 'Notebooks & experiments',
-      href: links.kaggle || '#',
-      external: true,
-      icon: (
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="#20BEFF"
-          aria-hidden="true"
-        >
-          <path d="M18.825 21h-3.488l-4.707-6.527-1.92 1.838V21H5.736V3h2.974v10.99l6.353-6.99h3.633l-5.694 6.136L18.825 21z" />
-        </svg>
-      ),
-    },
   ];
 
   return (
@@ -184,12 +167,6 @@ export function Chapter07Connect() {
               </a>
             ))}
           </AnimatedContent>
-
-          {/* Footer Note */}
-          <footer className={styles.footerNote}>
-            <p>© {new Date().getFullYear()} Mani Saideep Chintha. All rights reserved.</p>
-            <p>Designed & built with Next.js, TypeScript, SCSS, GSAP, and Three.js.</p>
-          </footer>
         </div>
 
         {/* Portrait Column (Right) */}

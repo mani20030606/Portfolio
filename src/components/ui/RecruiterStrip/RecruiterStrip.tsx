@@ -26,7 +26,7 @@ export function RecruiterStrip() {
             rel="noopener noreferrer"
             className={styles.resumeBtn}
           >
-            Resume ↗
+            RESUME ↗
           </a>
         )}
       </div>

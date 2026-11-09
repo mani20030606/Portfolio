@@ -156,8 +156,8 @@ export function Chapter02Journey() {
           <h2 className={styles.heading}>
             Education & Engineering{' '}
             <ShinyText
-              color="#B8B8B8"
-              shineColor="#FFFFFF"
+              color="#D6B46A"
+              shineColor="#F3D58A"
               speed={2.4}
               glow={0.5}
               shineWidth={65}

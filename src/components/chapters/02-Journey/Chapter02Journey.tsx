@@ -149,7 +149,7 @@ export function Chapter02Journey() {
         {/* Header Block: Eyebrow, Main Title with Shiny Accent, Subtitle */}
         <AnimatedContent distance={25} duration={0.7} ease="power3.out" className={styles.headerBlock}>
           <div className={styles.labelRow}>
-            <span className={styles.chapterLabel}>02 / THE JOURNEY</span>
+            <span className={styles.chapterLabel}>THE JOURNEY</span>
             <span className={styles.labelLine} aria-hidden="true" />
           </div>
 

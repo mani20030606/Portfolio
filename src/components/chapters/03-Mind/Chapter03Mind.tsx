@@ -70,7 +70,6 @@ export function Chapter03Mind() {
         <div className={styles.leftCol}>
           <AnimatedContent distance={35} duration={0.75} ease="power3.out" className={styles.header}>
             <div className={styles.sectionMeta}>
-              <span className={styles.sectionNum}>03</span>
               <span className={styles.sectionName}>The Mind</span>
             </div>
             <h2 className={styles.heading}>

@@ -32,7 +32,6 @@ export function Chapter01Person() {
         <div className={styles.contentCol}>
           <AnimatedContent distance={30} duration={0.7} ease="power3.out">
             <div className={styles.sectionMeta}>
-              <span className={styles.sectionNum}>01</span>
               <span className={styles.sectionName}>The Person</span>
             </div>
 

@@ -10,7 +10,7 @@ export function Chapter00Beginning() {
     <section id="beginning" className={styles.section} aria-label="The Beginning">
       {/* Chapter eyebrow row with extending rule */}
       <AnimatedContent distance={20} direction="vertical" duration={0.6} trigger="mount" delay={0.1} className={styles.labelRow}>
-        <span className={styles.chapterLabel}>00 / THE BEGINNING</span>
+        <span className={styles.chapterLabel}>THE BEGINNING</span>
         <span className={styles.labelLine} aria-hidden="true" />
       </AnimatedContent>
 

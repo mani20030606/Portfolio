@@ -105,7 +105,6 @@ export function Chapter04Builds() {
           <div className={styles.headerTop}>
             <div>
               <div className={styles.sectionMeta}>
-                <span className={styles.sectionNum}>04</span>
                 <span className={styles.sectionName}>The Builds</span>
               </div>
               <h2 className={styles.heading}>

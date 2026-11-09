@@ -14,7 +14,7 @@ export interface LinksConfig {
 
 export const links: LinksConfig = {
   github: 'https://github.com/mani20030606',
-  linkedin: 'https://linkedin.com/in/mani-saideep-chintha',
+  linkedin: 'https://www.linkedin.com/in/mani-saideep-chintha-95bb07298/',
   kaggle: 'https://kaggle.com/manisaideepchintha',
   email: 'manisaideep03@gmail.com',
   resume: '/assets/resume.pdf',

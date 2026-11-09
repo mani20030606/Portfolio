@@ -2,15 +2,18 @@
 
 import { useState, useEffect } from 'react';
 import styles from './Navigation.module.scss';
+import PillNav, { type PillNavItem } from '@/components/ui/PillNav/PillNav';
 import { links } from '@/content/links';
+import { getLenis } from '@/lib/animation/lenis';
 
 const navLinks = [
-  { num: '01', name: 'Home', id: 'beginning' },
-  { num: '02', name: 'About', id: 'person' },
-  { num: '03', name: 'Projects', id: 'builds' },
-  { num: '04', name: 'Journey', id: 'journey' },
-  { num: '05', name: 'Achievements', id: 'impact' },
-  { num: '06', name: 'Contact', id: 'connect' },
+  { name: 'Home', id: 'beginning', href: '#beginning' },
+  { name: 'About', id: 'person', href: '#person' },
+  { name: 'Journey', id: 'journey', href: '#journey' },
+  { name: 'Technologies', id: 'mind', href: '#mind' },
+  { name: 'Projects', id: 'builds', href: '#builds' },
+  { name: 'Achievements', id: 'impact', href: '#impact' },
+  { name: 'Contact', id: 'connect', href: '#connect' },
 ];
 
 export function Navigation() {
@@ -25,13 +28,13 @@ export function Navigation() {
         setScrollProgress((window.scrollY / docHeight) * 100);
       }
 
-      // Check current visible section
+      // Check current visible section in sequential order
       const sectionElements = navLinks.map((c) => ({
         id: c.id,
         el: document.getElementById(c.id),
       }));
 
-      for (const item of sectionElements.reverse()) {
+      for (const item of sectionElements.slice().reverse()) {
         if (item.el) {
           const rect = item.el.getBoundingClientRect();
           if (rect.top <= window.innerHeight * 0.45) {
@@ -43,7 +46,21 @@ export function Navigation() {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    // Connect to Lenis smooth scroll
+    const lenis = getLenis();
+    if (lenis) {
+      lenis.on('scroll', handleScroll);
+    }
+
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (lenis) {
+        lenis.off('scroll', handleScroll);
+      }
+    };
   }, []);
 
   // Trap Escape key for accessibility in mobile menu
@@ -57,6 +74,12 @@ export function Navigation() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [mobileMenuOpen]);
 
+  const pillItems = navLinks.map((item) => ({
+    label: item.name,
+    href: item.href,
+    ariaLabel: item.name,
+  }));
+
   return (
     <>
       <header className={styles.navbar}>
@@ -68,7 +91,7 @@ export function Navigation() {
         />
 
         <div className={styles.navContainer}>
-          {/* Brand Left: Infinity Icon + MANI SAIDEEP CHINTHA */}
+          {/* Brand Left: Infinity Icon + MANI SAIDEEP CHINTHA with wide gap to right */}
           <a href="#beginning" className={styles.brand} aria-label="Mani Saideep Chintha — Home">
             <svg
               viewBox="0 0 28 14"
@@ -85,40 +108,39 @@ export function Navigation() {
             <span className={styles.brandName}>MANI SAIDEEP CHINTHA</span>
           </a>
 
-          {/* Desktop Links: 01 Home, 02 About, 03 Projects, 04 Experience, 05 Achievements, 06 Contact */}
-          <nav className={styles.desktopNav} aria-label="Main Navigation">
-            {navLinks.map((item) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                className={`${styles.navItem} ${
-                  activeSection === item.id ? styles.active : ''
-                }`}
-              >
-                <span className={styles.navNum}>{item.num}</span>
-                <span className={styles.navText}>{item.name}</span>
-                {activeSection === item.id && (
-                  <span className={styles.activeUnderline} aria-hidden="true" />
-                )}
-              </a>
-            ))}
-          </nav>
-
-          {/* Mobile Menu Toggle Button */}
-          <button
-            className={styles.menuToggle}
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-expanded={mobileMenuOpen}
-            aria-label="Toggle navigation menu"
-          >
-            <span className={styles.menuLabel}>
-              {mobileMenuOpen ? 'Close' : 'Menu'}
-            </span>
-          </button>
+          {/* Desktop Nav on the right with PillNav effect */}
+          <div className={styles.navRight}>
+            <PillNav
+              items={pillItems}
+              activeHref={`#${activeSection}`}
+              onItemClick={(item, index, event) => {
+                const targetId = item.href?.replace('#', '');
+                if (targetId) {
+                  setActiveSection(targetId);
+                  const el = document.getElementById(targetId);
+                  if (el) {
+                    event.preventDefault();
+                    const lenis = getLenis();
+                    if (lenis) {
+                      lenis.scrollTo(el, { offset: -60, duration: 1.2 });
+                    } else {
+                      el.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }
+                }
+              }}
+              itemStyle="pill"
+              hoverEffect="fill"
+              indicator="dot"
+              theme="dark"
+              size="sm"
+              collapse="auto"
+            />
+          </div>
         </div>
       </header>
 
-      {/* Mobile Drawer Navigation */}
+      {/* Fallback Mobile Drawer Navigation */}
       {mobileMenuOpen && (
         <div className={styles.mobileOverlay} role="dialog" aria-modal="true">
           <div className={styles.mobileDrawer}>
@@ -132,7 +154,6 @@ export function Navigation() {
                   }`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <span className={styles.mobileNum}>{item.num}</span>
                   <span className={styles.mobileName}>{item.name}</span>
                 </a>
               ))}

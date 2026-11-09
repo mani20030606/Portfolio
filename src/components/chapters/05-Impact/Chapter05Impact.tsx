@@ -61,7 +61,6 @@ export function Chapter05Impact() {
         {/* Section Header */}
         <AnimatedContent distance={30} duration={0.8} ease="power3.out" className={styles.headerBlock}>
           <div className={styles.sectionMeta}>
-            <span className={styles.sectionNum}>05</span>
             <span className={styles.sectionName}>Achievements</span>
           </div>
           <h2 className={styles.heading}>

@@ -5,6 +5,8 @@
   @include section-rule;
   padding-top: $section-spacing-desktop;
   padding-bottom: $section-spacing-desktop;
+  background-color: #000000;
+  position: relative;
   overflow: hidden;
 
   @include mobile {
@@ -16,9 +18,14 @@
 .inner {
   @include page-container;
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: $space-80;
+  grid-template-columns: 1.32fr 0.68fr;
+  gap: $space-64;
   align-items: start;
+
+  @include tablet {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: $space-40;
+  }
 
   @include mobile {
     grid-template-columns: 1fr;
@@ -26,148 +33,259 @@
   }
 }
 
-// ─── CONTENT ─────────────────────────────────────────────────────────────────
+// ─── CONTENT COLUMN ──────────────────────────────────────────────────────────
 .contentCol {
   display: flex;
   flex-direction: column;
-  gap: $space-48;
+  width: 100%;
+}
+
+// ─── HEADER BLOCK ────────────────────────────────────────────────────────────
+.headerBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: $space-32;
 }
 
 .sectionMeta {
   display: flex;
   align-items: center;
-  gap: $space-16;
-}
-
-.sectionNum {
-  font-family: $font-mono;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  color: $accent-lavender;
+  margin-bottom: $space-20;
 }
 
 .sectionName {
   font-family: $font-mono;
   font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: $text-secondary;
+  color: #888888;
 }
 
 .heading {
   @include type-chapter-title;
-  color: $text-primary;
+  font-size: clamp(36px, 5.2vw, 64px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  margin-bottom: $space-20;
 }
 
-.headingMuted {
-  color: $text-secondary;
+.impactfulText {
+  font-style: italic !important;
+  font-weight: 500;
+  display: inline-block;
+  text-shadow: 0 0 24px rgba(214, 180, 106, 0.4);
 }
 
-// ─── STATUS ──────────────────────────────────────────────────────────────────
-.statusRow {
-  display: flex;
+.sub {
+  @include type-body;
+  font-size: clamp(14.5px, 1.15vw, 16.5px);
+  line-height: 1.6;
+  color: #999999;
+  max-width: 580px;
+  margin-bottom: $space-24;
+}
+
+// ─── STATUS PILL ─────────────────────────────────────────────────────────────
+.statusPill {
+  display: inline-flex;
   align-items: center;
   gap: $space-12;
-  padding: $space-20 0;
-  border-top: 1px solid $border-visible;
-  border-bottom: 1px solid $border-visible;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: $space-4;
+  transition: border-color $duration-fast $ease-standard;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  @include mobile {
+    flex-wrap: wrap;
+    gap: $space-8;
+    padding: 10px 14px;
+    border-radius: 12px;
+  }
 }
 
 .statusDot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #FFFFFF;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+  background: #D6B46A;
+  box-shadow: 0 0 10px rgba(214, 180, 106, 0.85);
   flex-shrink: 0;
-  animation: pulse 2s ease-in-out infinite;
+  animation: pulse 2.4s ease-in-out infinite;
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.92);
+  }
 }
 
-.statusTitle {
+.statusPillTitle {
   font-family: $font-mono;
   font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.06em;
-  color: $text-primary;
+  letter-spacing: 0.04em;
+  color: #FFFFFF;
 }
 
-.statusSep {
-  color: $border-visible;
-}
-
-.statusSub {
-  font-family: $font-mono;
+.statusDivider {
+  color: rgba(255, 255, 255, 0.2);
   font-size: 12px;
-  color: $text-secondary;
+
+  @include mobile {
+    display: none;
+  }
 }
 
-// ─── LINK GRID ───────────────────────────────────────────────────────────────
-.linkGrid {
-  display: flex;
-  flex-direction: column;
+.statusPillDetail {
+  font-family: $font-body;
+  font-size: 13px;
+  color: #999999;
+
+  @include mobile {
+    font-size: 12px;
+  }
 }
 
-.contactLink {
+// ─── CARDS GRID ──────────────────────────────────────────────────────────────
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  width: 100%;
+  margin-bottom: $space-40;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.card {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: $space-20 0;
-  border-bottom: 1px solid $border-subtle;
-  font-family: $font-display;
-  font-size: clamp(22px, 2.5vw, 36px);
-  font-weight: 600;
-  color: $text-secondary;
-  letter-spacing: -0.01em;
-  transition: color $duration-fast $ease-standard;
+  padding: 16px 20px;
+  border-radius: 14px;
+  background: #101010;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+  transition: background-color $duration-fast $ease-standard,
+              border-color $duration-fast $ease-standard,
+              transform $duration-fast $ease-standard,
+              box-shadow $duration-fast $ease-standard;
 
   &:hover {
-    color: $text-primary;
+    background: #161616;
+    border-color: rgba(255, 255, 255, 0.22);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
 
-    .linkArrow { color: $accent-lavender; }
+    .cardIconWrapper {
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(255, 255, 255, 0.14);
+    }
+
+    .cardArrow {
+      color: #FFFFFF;
+      transform: translate(2px, -2px);
+    }
+  }
+
+  @include reduced-motion {
+    &:hover {
+      transform: none;
+      .cardArrow { transform: none; }
+    }
   }
 }
 
-.linkLabel {
-  flex: 1;
+.cardLeft {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
 }
 
-.linkArrow {
-  font-family: $font-mono;
-  font-size: 16px;
-  color: $border-visible;
-  transition: color $duration-fast $ease-standard;
+.cardIconWrapper {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background-color $duration-fast $ease-standard,
+              border-color $duration-fast $ease-standard;
 }
 
-// ─── FOOTER ──────────────────────────────────────────────────────────────────
-.footerNote {
+.cardInfo {
   display: flex;
   flex-direction: column;
-  gap: $space-4;
-
-  p {
-    font-family: $font-mono;
-    font-size: 10px;
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    color: $text-secondary;
-    opacity: 0.5;
-    line-height: 1.6;
-  }
+  gap: 2px;
+  min-width: 0;
 }
 
-// ─── PORTRAIT ────────────────────────────────────────────────────────────────
+.cardTitle {
+  font-family: $font-display;
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardSubtitle {
+  font-family: $font-body;
+  font-size: 12px;
+  color: #888888;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardArrow {
+  font-family: $font-mono;
+  font-size: 17px;
+  color: #555555;
+  transition: transform $duration-fast $ease-standard,
+              color $duration-fast $ease-standard;
+  padding-left: $space-8;
+  flex-shrink: 0;
+}
+
+// ─── PORTRAIT COLUMN (RIGHT) ─────────────────────────────────────────────────
 .portraitCol {
   position: sticky;
-  top: calc(56px + #{$space-48});
+  top: calc(72px + #{$space-32});
+  width: 100%;
+  max-width: 420px;
+  justify-self: end;
 
-  @include mobile { position: static; }
+  @include mobile {
+    position: static;
+    max-width: 100%;
+    margin-top: $space-16;
+  }
 }
 
 .portraitFrame {
@@ -175,12 +293,40 @@
   width: 100%;
   aspect-ratio: 3 / 4;
   overflow: hidden;
-  border-radius: 2px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #101010;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
   @include interactive-photo-hover;
 }
 
 .portrait {
   object-fit: cover;
-  object-position: center;
-  filter: grayscale(5%);
+  object-position: center top;
+  filter: grayscale(10%);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              filter 0.6s ease;
+
+  &:hover {
+    transform: scale(1.02);
+    filter: grayscale(0%);
+  }
+}
+
+// ─── FOOTER NOTE ─────────────────────────────────────────────────────────────
+.footerNote {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  padding-top: $space-24;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  width: 100%;
+
+  p {
+    font-family: $font-mono;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: #666666;
+    line-height: 1.6;
+  }
 }

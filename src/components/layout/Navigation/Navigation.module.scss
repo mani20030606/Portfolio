@@ -8,11 +8,11 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  height: 56px;
-  background: rgba($bg-primary, 0.82);
+  height: 60px;
+  background: rgba(0, 0, 0, 0.82);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba($border-visible, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .progressBar {
@@ -20,29 +20,38 @@
   bottom: -1px;
   left: 0;
   height: 1px;
-  background: linear-gradient(90deg, $accent-lavender, $accent-icy);
+  background: linear-gradient(90deg, #FFFFFF, #888888);
   transition: width 80ms linear;
+  z-index: 10;
 }
 
 .navContainer {
   @include page-container;
+  box-sizing: border-box;
+  width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: $space-24;
 }
 
-// ─── BRAND ───────────────────────────────────────────────────────────────────
+// ─── BRAND (LEFT EDGE) ───────────────────────────────────────────────────────
 .brand {
   display: inline-flex;
   align-items: center;
   gap: $space-12;
-  color: $text-primary;
+  color: #FFFFFF;
   text-decoration: none;
+  flex-shrink: 0;
   transition: opacity $duration-fast $ease-standard;
 
   &:hover {
     opacity: 0.85;
+
+    .infinityIcon {
+      transform: rotate(360deg);
+    }
   }
 }
 
@@ -50,6 +59,9 @@
   width: 22px;
   height: 12px;
   stroke: #FFFFFF;
+  flex-shrink: 0;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.65, 0, 0.25, 1);
 }
 
 .brandName {
@@ -59,86 +71,22 @@
   letter-spacing: 0.16em;
   color: #FFFFFF;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
-// ─── DESKTOP NAV ─────────────────────────────────────────────────────────────
-.desktopNav {
+// ─── NAV RIGHT (BUTTONS EDGE) ────────────────────────────────────────────────
+.navRight {
   display: flex;
   align-items: center;
-  gap: $space-32;
-
-  @include mobile { display: none; }
+  justify-content: flex-end;
 }
 
-.navItem {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: $font-body;
-  font-size: 13px;
-  font-weight: 500;
-  color: #A0A0A0;
-  text-decoration: none;
-  position: relative;
-  padding: 6px 0;
-  transition: color $duration-fast $ease-standard, transform $duration-fast $ease-standard;
-
-  &:hover {
-    color: #FFFFFF;
-    transform: translateY(-1px);
-  }
-
-  &.active {
-    color: #FFFFFF;
-  }
-}
-
-.navNum {
-  font-size: 12px;
-  font-weight: 400;
-  opacity: 0.7;
-}
-
-.navText {
-  font-weight: 500;
-}
-
-.activeUnderline {
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: #FFFFFF;
-  border-radius: 1px;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
-}
-
-// ─── MOBILE TOGGLE ───────────────────────────────────────────────────────────
-.menuToggle {
-  display: none;
-  font-family: $font-body;
-  font-size: 11px;
-  letter-spacing: 0.10em;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: $text-secondary;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: $space-8;
-
-  @include mobile { display: block; }
-}
-
-.menuLabel { pointer-events: none; }
-
-// ─── MOBILE OVERLAY ──────────────────────────────────────────────────────────
+// ─── MOBILE DRAWER (FALLBACK) ────────────────────────────────────────────────
 .mobileOverlay {
   position: fixed;
   inset: 0;
   z-index: 999;
-  background: $bg-primary;
+  background: #000000;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -154,36 +102,31 @@
 .mobileNav {
   display: flex;
   flex-direction: column;
-  gap: $space-8;
+  gap: $space-12;
 }
 
 .mobileLink {
   display: flex;
-  align-items: baseline;
-  gap: $space-20;
+  align-items: center;
   padding: $space-12 0;
-  border-bottom: 1px solid $border-subtle;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  text-decoration: none;
   transition: color $duration-fast $ease-standard;
 
-  &.active { color: $accent-lavender; }
-}
-
-.mobileNum {
-  font-family: $font-body;
-  font-size: 11px;
-  font-weight: 700;
-  color: $accent-icy;
-  letter-spacing: 0.10em;
-  min-width: 28px;
+  &.active {
+    color: #FFFFFF;
+  }
 }
 
 .mobileName {
   font-family: $font-display;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 700;
-  color: $text-secondary;
+  color: #CCCCCC;
 
-  .mobileLink.active & { color: $accent-lavender; }
+  .mobileLink.active & {
+    color: #FFFFFF;
+  }
 }
 
 .mobileSocials {

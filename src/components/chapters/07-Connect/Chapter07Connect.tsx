@@ -18,7 +18,7 @@ export function Chapter07Connect() {
         <div className={styles.contentCol}>
           <AnimatedContent distance={30} duration={0.8}>
             <div className={styles.sectionMeta}>
-              <span className={styles.sectionNum}>07</span>
+              <span className={styles.sectionNum}>06</span>
               <span className={styles.sectionName}>Let&apos;s Connect</span>
             </div>
 

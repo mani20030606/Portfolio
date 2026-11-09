@@ -113,39 +113,6 @@ export function Chapter00Beginning() {
           <span className={styles.sidebarTag}>PRODUCT ENGINEERING</span>
         </AnimatedContent>
       </aside>
-
-      {/* Bottom Metrics Bar */}
-      <AnimatedContent
-        distance={35}
-        direction="vertical"
-        duration={0.8}
-        ease="power3.out"
-        stagger={0.08}
-        trigger="mount"
-        delay={0.42}
-        className={styles.metricsBar}
-        aria-label="Career Milestones"
-      >
-        <div className={styles.metricItem}>
-          <span className={styles.metricNumber}>3+</span>
-          <span className={styles.metricLabel}>REAL-WORLD PROJECTS</span>
-        </div>
-        <div className={styles.metricDivider} aria-hidden="true" />
-        <div className={styles.metricItem}>
-          <span className={styles.metricNumber}>1</span>
-          <span className={styles.metricLabel}>HACKATHON WIN</span>
-        </div>
-        <div className={styles.metricDivider} aria-hidden="true" />
-        <div className={styles.metricItem}>
-          <span className={styles.metricNumber}>1</span>
-          <span className={styles.metricLabel}>WORK ORDER</span>
-        </div>
-        <div className={styles.metricDivider} aria-hidden="true" />
-        <div className={styles.metricItem}>
-          <span className={styles.metricNumber}>2026</span>
-          <span className={styles.metricLabel}>B.TECH CSE (AIML)</span>
-        </div>
-      </AnimatedContent>
     </section>
   );
 }

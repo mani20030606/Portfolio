@@ -1,6 +1,7 @@
 export interface KeyResult {
   value: string;
   label: string;
+  isGold?: boolean;
 }
 
 export interface ProjectItem {
@@ -12,7 +13,7 @@ export interface ProjectItem {
   listTags: string;
   status: string;
   badgeText: string;
-  badgeType: 'gold' | 'cyan' | 'neutral' | 'purple';
+  badgeType: 'gold' | 'cyan' | 'neutral';
   origin: 'huebits' | 'independent';
   attribution: string;
   isInDevelopment?: boolean;
@@ -37,19 +38,19 @@ export const projects: ProjectItem[] = [
     listTags: 'Computer Vision • Measurement • Mobile AI',
     status: 'First Prize',
     badgeText: 'First Prize — RTGS Hackathon',
-    badgeType: 'purple',
+    badgeType: 'gold',
     origin: 'huebits',
     attribution: 'Built while working as an intern at Huebits',
     description:
-      'A mobile-based system that measures granite block dimensions from images, estimates volume, and classifies slabs using computer vision and geometric calibration.',
+      'Mobile vision system estimating 3D granite block dimensions and volume via edge geometric calibration.',
     problem:
-      'Manual tape measurements across rough, irregular quarry surfaces lead to human error, safety risks, and operational delays.',
+      'Manual tape measurements across rough quarry surfaces cause human error, safety hazards, and delays.',
     approach:
-      'ArUco marker calibration, perspective homography, and YOLOv8 paired with MobileSAM for sub-pixel boundary refinement.',
+      'ArUco marker calibration, perspective homography, and YOLOv8 + MobileSAM contour refinement.',
     solution:
-      'React Native mobile client with offline on-device inference, multi-face dimension averaging, and FastAPI cloud sync.',
+      'Mobile client with on-device offline inference, 4-face averaging, and FastAPI cloud sync.',
     outcome:
-      'Working prototype tested on field blocks, achieving 95–98% measurement accuracy and awarded First Prize at the RTGS Hackathon.',
+      '95–98% measurement accuracy, field tested, awarded 1st Prize at RTGS Hackathon.',
     myContribution: [
       'Led the end-to-end engineering of the system during internship at Huebits',
       'Implemented YOLO object segmentation paired with MobileSAM for boundary refinement',
@@ -67,11 +68,9 @@ export const projects: ProjectItem[] = [
       'FastAPI',
       'React Native',
       'TFLite',
-      'SQLite',
-      'Supabase',
     ],
     keyResults: [
-      { value: '95–98%', label: 'Measurement Accuracy' },
+      { value: '95–98%', label: 'Measurement Accuracy', isGold: true },
       { value: 'Offline', label: 'On-Device Inference' },
       { value: 'Real-World', label: 'Quarry Testing' },
     ],
@@ -86,20 +85,20 @@ export const projects: ProjectItem[] = [
     listTags: 'Vehicle • Pothole • Road Safety',
     status: 'Prototype',
     badgeText: 'Ongoing at Huebits — Prototype',
-    badgeType: 'cyan',
+    badgeType: 'neutral',
     origin: 'huebits',
     attribution: 'Ongoing under Huebits · Internship Project',
     isInDevelopment: true,
     description:
-      'A multi-class visual detection architecture optimized for real-time edge streaming, safety telemetry, and localized hazard alerts to prevent roadway collisions.',
+      'Real-time multi-class edge vision system providing road safety telemetry and localized hazard alerts.',
     problem:
-      'High-speed highway transit demands sub-100ms hazard detection for stationary vehicles, pedestrian crossings, and missing signage under diverse lighting conditions.',
+      'Sub-100ms hazard detection needed for vehicles, pedestrians, and obstacles in variable lighting.',
     approach:
-      'Custom vision dataset curation across vehicles, potholes, and obstacles with quantized edge model benchmarking.',
+      'Curated highway hazard datasets with low-latency quantized model benchmarking.',
     solution:
-      'Low-latency PyTorch YOLO pipeline optimized for vehicle-mounted edge processors with automated spatial alert dispatch.',
+      'Optimized PyTorch YOLO edge pipeline deployed for on-vehicle streaming and alerts.',
     outcome:
-      'Functional vehicle-edge detection pipeline achieving low-latency inference on road streaming feeds.',
+      'Ongoing engineering under Huebits with real-time video hazard detection telemetry.',
     myContribution: [
       'Initiated and developed under Huebits for real-time roadway hazard detection',
       'Curated and annotated custom vision datasets across vehicles, pedestrians, and traffic markers',
@@ -108,7 +107,7 @@ export const projects: ProjectItem[] = [
     ],
     stack: ['Python', 'PyTorch', 'YOLOv8', 'OpenCV', 'Edge AI', 'Computer Vision'],
     keyResults: [
-      { value: '<100ms', label: 'Inference Latency' },
+      { value: '<100ms', label: 'Inference Latency', isGold: true },
       { value: 'Edge', label: 'On-Vehicle Vision' },
       { value: 'Real-Time', label: 'Hazard Alerting' },
     ],
@@ -127,15 +126,15 @@ export const projects: ProjectItem[] = [
     origin: 'independent',
     attribution: 'Independent Engineering Project (My Own)',
     description:
-      'A high-precision edge computer vision pipeline trained to detect multi-class weapons (firearms, cold weapons) in real-time video streams with low latency and minimal false alarms.',
+      'High-precision edge vision pipeline detecting weapons in real-time CCTV video streams with low latency.',
     problem:
-      'Surveillance feeds in sensitive public and private zones require instantaneous threat detection without reliance on human monitoring fatigue.',
+      'Surveillance feeds require instant threat detection without reliance on human observer fatigue.',
     approach:
-      'Curated and augmented specialized threat object datasets, spatial bounding boxes, and precision-recall curve tuning.',
+      'Curated threat object datasets, spatial bounding boxes, and precision-recall curve tuning.',
     solution:
       'Real-time CCTV inference pipeline with edge YOLOv8 processing and automated alert dispatch.',
     outcome:
-      'Engineered personal project achieving reliable real-time detection on edge camera streams with minimal false alarms.',
+      'Reliable real-time threat detection on edge camera streams with minimal false alarms.',
     myContribution: [
       'Curated and augmented specialized weapon and threat object datasets across varied lighting and angles',
       'Fine-tuned lightweight YOLOv8 models optimized for low-latency CCTV edge processing',
@@ -163,15 +162,15 @@ export const projects: ProjectItem[] = [
     origin: 'independent',
     attribution: 'Independent Engineering Project (My Own)',
     description:
-      'A hybrid architecture combining Neo4j graph traversal with ChromaDB vector embeddings and lightweight LLM synthesis for context-rich answers.',
+      'Dual-engine retrieval uniting Neo4j graph schemas and ChromaDB dense vector indexing.',
     problem:
-      'Pure vector-based RAG engines struggle with multi-hop questions and entity relationship traversal across dense technical corpora.',
+      'Pure vector-based RAG engines struggle with multi-hop questions and entity relationship traversal.',
     approach:
-      'Dual-engine retrieval uniting Neo4j graph schemas and ChromaDB dense vector indexing with sentence-transformer embeddings.',
+      'Hybrid schema uniting Neo4j graph nodes and ChromaDB vector embeddings with LLM synthesis.',
     solution:
-      'Streamlit interactive workbench with entity-relationship extraction pipeline and structured LLM reasoning synthesis.',
+      'Streamlit interactive workbench with entity-relationship extraction pipeline and reasoning synthesis.',
     outcome:
-      'Open-source repository available on GitHub with documented retrieval benchmarks across multi-hop technical queries.',
+      'Documented multi-hop retrieval benchmarks with open-source repository available on GitHub.',
     myContribution: [
       'Architected hybrid retrieval combining Neo4j graph nodes and ChromaDB vector embeddings',
       'Integrated all-MiniLM-L6-v2 sentence embeddings for dense document chunk indexing',

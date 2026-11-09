@@ -16,11 +16,6 @@ export function RecruiterStrip() {
         </div>
         <div className={styles.divider} aria-hidden="true" />
         <div className={styles.item}>
-          <span className={styles.label}>Prize</span>
-          <span className={styles.value}>1st — RTGS Hackathon</span>
-        </div>
-        <div className={styles.divider} aria-hidden="true" />
-        <div className={styles.item}>
           <span className={styles.label}>Location</span>
           <span className={styles.value}>Visakhapatnam, India</span>
         </div>

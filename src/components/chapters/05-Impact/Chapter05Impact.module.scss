@@ -3,12 +3,14 @@
 
 .section {
   @include section-rule;
-  padding-top: $section-spacing-desktop;
-  padding-bottom: $section-spacing-desktop;
+  padding-top: $space-80;
+  padding-bottom: $space-96;
+  background-color: #000000;
+  position: relative;
 
   @include mobile {
-    padding-top: $section-spacing-mobile;
-    padding-bottom: $section-spacing-mobile;
+    padding-top: $space-48;
+    padding-bottom: $space-64;
   }
 }
 
@@ -16,19 +18,28 @@
   @include page-container;
 }
 
+// ─── SECTION HEADER ──────────────────────────────────────────────────────────
+.headerBlock {
+  margin-bottom: $space-48;
+
+  @include mobile {
+    margin-bottom: $space-32;
+  }
+}
+
 .sectionMeta {
   display: flex;
   align-items: center;
   gap: $space-16;
-  margin-bottom: $space-64;
+  margin-bottom: $space-16;
 }
 
 .sectionNum {
   font-family: $font-mono;
   font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  color: $accent-lavender;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #FFFFFF;
 }
 
 .sectionName {
@@ -40,148 +51,212 @@
   color: $text-secondary;
 }
 
-// ─── FEATURE BLOCK ───────────────────────────────────────────────────────────
-.featureBlock {
-  margin-bottom: $space-96;
+.heading {
+  @include type-chapter-title;
+  color: $text-primary;
+  margin-bottom: $space-12;
 }
 
-.featureGrid {
+.subtitle {
+  font-family: $font-body;
+  font-size: 14.5px;
+  color: $text-secondary;
+  line-height: 1.6;
+  max-width: 52ch;
+  margin: 0;
+}
+
+// ─── CARDS GRID (EXACTLY TWO SIDE BY SIDE) ───────────────────────────────────
+.cardsGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: $space-80;
-  align-items: center;
+  gap: $space-24;
+  align-items: stretch;
 
   @include mobile {
     grid-template-columns: 1fr;
-    gap: $space-48;
+    gap: $space-20;
   }
 }
 
-.featureText {
+// ─── REFLECTIVE ACHIEVEMENT CARD ─────────────────────────────────────────────
+.achievementCard {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 380px;
   display: flex;
   flex-direction: column;
-  gap: $space-24;
+
+  :global(.reflective-card__body) {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 24px 48px -18px rgba(0, 0, 0, 0.85), 0 8px 24px -8px rgba(0, 0, 0, 0.6);
+    transition: border-color 0.3s $ease-standard, box-shadow 0.3s $ease-standard;
+  }
+
+  &:hover :global(.reflective-card__body) {
+    border-color: rgba(255, 255, 255, 0.28);
+    box-shadow: 0 32px 64px -16px rgba(0, 0, 0, 0.95), 0 0 32px rgba(255, 255, 255, 0.05);
+  }
+
+  :global(.reflective-card__content) {
+    padding: $space-32 $space-32;
+    height: 100%;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    user-select: text;
+    -webkit-user-select: text;
+  }
+
+  @include mobile {
+    min-height: 320px;
+
+    :global(.reflective-card__content) {
+      padding: $space-20 $space-20;
+    }
+  }
 }
 
-.prizeBadge {
+.cardTop {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardHeaderRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $space-24;
+}
+
+.iconBox {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #D1D5DB;
+  flex-shrink: 0;
+  transition: all 0.25s $ease-standard;
+}
+
+.achievementCard:hover .iconBox {
+  border-color: rgba(255, 255, 255, 0.28);
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.08);
+}
+
+.cardBadge {
+  font-family: $font-mono;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #9CA3AF;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 4px $space-12;
+  border-radius: $radius-pill;
+  text-transform: uppercase;
+}
+
+.cardBadgeHighlight {
+  font-family: $font-mono;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #F3F4F6;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  padding: 4px $space-12;
+  border-radius: $radius-pill;
+  text-transform: uppercase;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.04);
+}
+
+.cardTitle {
+  font-family: $font-display;
+  font-size: clamp(20px, 1.8vw, 24px);
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.32;
+  margin: 0 0 $space-16 0;
+  letter-spacing: -0.015em;
+}
+
+.cardDescription {
+  font-family: $font-body;
+  font-size: 14px;
+  color: #A3A3A3;
+  line-height: 1.65;
+  margin: 0;
+}
+
+// ─── VISUAL PROGRESSION / INDICATOR STRIP ────────────────────────────────────
+.progressionSection {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: $space-20;
+  margin-top: $space-24;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.progressionLabel {
+  font-family: $font-mono;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #737373;
+}
+
+.progressionFlow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.progressionStep {
   font-family: $font-mono;
   font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.10em;
-  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #A3A3A3;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: $radius-pill;
+  padding: 4px $space-12;
+  white-space: nowrap;
+}
+
+.flowArrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #666666;
+  flex-shrink: 0;
+}
+
+.progressionStepHighlight {
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   color: #FFFFFF;
-}
-
-.prizeEvent {
-  font-family: $font-display;
-  font-size: clamp(40px, 6vw, 80px);
-  font-weight: 600;
-  color: $text-primary;
-  line-height: 1.0;
-  letter-spacing: -0.02em;
-}
-
-.prizeDesc {
-  font-family: $font-body;
-  font-size: 16px;
-  color: $text-secondary;
-  line-height: 1.65;
-  max-width: 50ch;
-}
-
-.significance {
-  border-left: 2px solid $accent-lavender;
-  padding: $space-16 $space-20;
-  display: flex;
-  flex-direction: column;
-  gap: $space-8;
-  margin-top: $space-8;
-}
-
-.sigLabel {
-  font-family: $font-mono;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: $accent-lavender;
-}
-
-.sigText {
-  font-family: $font-body;
-  font-size: 14px;
-  color: $text-secondary;
-  line-height: 1.6;
-}
-
-// ─── MEDIA ───────────────────────────────────────────────────────────────────
-.featureMedia {
-  display: flex;
-  flex-direction: column;
-  gap: $space-12;
-}
-
-.photoFrame {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  border-radius: 2px;
-  @include interactive-photo-hover;
-}
-
-.photo {
-  object-fit: cover;
-  object-position: center;
-}
-
-.photoCaption {
-  font-family: $font-mono;
-  font-size: 9px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: $text-secondary;
-  opacity: 0.6;
-}
-
-// ─── SECONDARY ───────────────────────────────────────────────────────────────
-.secondaryRow {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: $space-48;
-  padding-top: $space-48;
-  border-top: 1px solid $border-visible;
-}
-
-.secondaryItem {
-  display: flex;
-  flex-direction: column;
-  gap: $space-12;
-}
-
-.secBadge {
-  font-family: $font-mono;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: $accent-icy;
-}
-
-.secEvent {
-  font-family: $font-display;
-  font-size: clamp(22px, 2.4vw, 32px);
-  font-weight: 600;
-  color: $text-primary;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
-}
-
-.secDesc {
-  font-family: $font-body;
-  font-size: 14px;
-  color: $text-secondary;
-  line-height: 1.6;
-  max-width: 50ch;
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: $radius-pill;
+  padding: 4px $space-12;
+  white-space: nowrap;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.06);
 }

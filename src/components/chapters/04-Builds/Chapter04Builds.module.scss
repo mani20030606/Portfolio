@@ -6,7 +6,7 @@
   padding-top: $section-spacing-desktop;
   padding-bottom: $section-spacing-desktop;
   position: relative;
-  background: $bg-primary;
+  background: #000000;
 
   @include mobile {
     padding-top: $section-spacing-mobile;
@@ -72,7 +72,7 @@
 .sub {
   font-family: $font-body;
   font-size: 14.5px;
-  color: $text-secondary;
+  color: #999999;
   line-height: 1.6;
   max-width: 52ch;
 }
@@ -90,7 +90,7 @@
 
   @include mobile {
     display: flex;
-    flex-direction: column-reverse; // Place project selector on top on mobile
+    flex-direction: column-reverse; // Selector on top on mobile
     gap: $space-24;
   }
 }
@@ -99,47 +99,15 @@
 // LEFT PANEL: SELECTED PROJECT DETAILS (~60%)
 // ══════════════════════════════════════════════════════════════════════════════
 .leftPanel {
-  background: #0B0B0B;
-  border: 1px solid #222222;
+  background: #101010;
+  border: 1px solid #303030;
   border-radius: $radius-card;
-  padding: $space-24 $space-24;
+  padding: $space-20 $space-24;
   position: relative;
-  max-height: min(600px, calc(100vh - 180px));
-  overflow-y: auto;
-  transition: all 0.2s $ease-standard;
-  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
-
-  &::-webkit-scrollbar {
-    width: 5px;
-  }
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.18);
-    border-radius: 4px;
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.35);
-    }
-  }
+  transition: all 0.25s $ease-standard;
 
   @include mobile {
-    padding: $space-20;
-    max-height: 520px;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0.85;
-    transform: translateY(3px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+    padding: $space-16;
   }
 }
 
@@ -147,7 +115,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: $space-16;
+  min-height: 34px;
+  margin-bottom: $space-12;
 }
 
 .indexCount {
@@ -155,92 +124,106 @@
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.1em;
-  color: #FFFFFF;
+  color: #F5F5F5;
 }
 
 .indexMuted {
-  color: #555555;
+  color: #737373;
   font-weight: 400;
 }
 
-// Title Section
-.titleSection {
-  margin-bottom: $space-16;
-}
-
-.projectTitle {
-  font-family: $font-display;
-  font-size: clamp(22px, 2.2vw, 28px);
-  font-weight: 700;
-  line-height: 1.25;
-  color: #FFFFFF;
-  margin-bottom: $space-8;
-}
-
-.projectSubtitle {
-  font-family: $font-body;
-  font-size: 13.5px;
-  color: #8E8E8E;
-  margin-bottom: $space-12;
-}
-
-// Attribution Badges
-.attributionHuebits {
+// Huebits Branding Badge (White Container for Colorful Company Logo)
+.huebitsBrandBadge {
   display: inline-flex;
   align-items: center;
-  gap: $space-8;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  padding: $space-4 $space-12;
-  border-radius: $radius-pill;
-  font-family: $font-mono;
-  font-size: 11px;
-  font-weight: 600;
-  color: #FFFFFF;
+  justify-content: center;
+  background: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  padding: 4px $space-12;
+  border-radius: 8px;
+  height: 34px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.55), 0 0 12px rgba(255, 255, 255, 0.2);
+  }
 }
 
+.huebitsLogoImg {
+  object-fit: contain;
+  height: 24px;
+  width: auto;
+  max-width: 98px;
+  display: block;
+}
+
+// Attribution Badge for Independent Projects
 .attributionIndependent {
   display: inline-flex;
   align-items: center;
   gap: $space-8;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: $space-4 $space-12;
+  background: #141414;
+  border: 1px solid #303030;
+  padding: 4px $space-12;
   border-radius: $radius-pill;
+  height: 34px;
   font-family: $font-mono;
   font-size: 11px;
   font-weight: 500;
-  color: #A3A3A3;
+  color: #999999;
 }
 
 .attributionDot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #FFFFFF;
-  box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+  background: #C5C5C5;
+  box-shadow: 0 0 6px rgba(197, 197, 197, 0.6);
   flex-shrink: 0;
+}
+
+// Title Section
+.titleSection {
+  margin-bottom: $space-12;
+}
+
+.projectTitle {
+  font-family: $font-display;
+  font-size: clamp(20px, 1.9vw, 24px);
+  font-weight: 700;
+  line-height: 1.25;
+  color: #F5F5F5;
+  margin-bottom: 4px;
+}
+
+.projectSubtitle {
+  font-family: $font-body;
+  font-size: 13px;
+  color: #999999;
+  margin-bottom: 0;
 }
 
 .projectDescription {
   font-family: $font-body;
-  font-size: 14px;
-  color: #D4D4D4;
-  line-height: 1.65;
-  margin-bottom: $space-24;
-  padding-bottom: $space-20;
-  border-bottom: 1px solid #1C1C1C;
+  font-size: 13px;
+  color: #C5C5C5;
+  line-height: 1.5;
+  margin-bottom: $space-16;
+  padding-bottom: $space-12;
+  border-bottom: 1px solid #222222;
 }
 
 // Details Grid inside Left Panel
 .detailsGrid {
   display: grid;
   grid-template-columns: 1.15fr 1fr;
-  gap: $space-24;
+  gap: $space-16;
 
   @include mobile {
     grid-template-columns: 1fr;
-    gap: $space-20;
+    gap: $space-16;
   }
 }
 
@@ -248,89 +231,89 @@
 .specsColumn {
   display: flex;
   flex-direction: column;
-  gap: $space-16;
+  gap: $space-8;
 }
 
 .specRow {
   display: flex;
   align-items: flex-start;
-  gap: $space-12;
+  gap: $space-8;
 }
 
 .specIconBox {
-  width: 32px;
-  height: 32px;
+  width: 26px;
+  height: 26px;
   border-radius: $radius-sm;
-  background: #141414;
-  border: 1px solid #242424;
+  background: #171717;
+  border: 1px solid #303030;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #B5B5B5;
+  color: #C5C5C5;
   flex-shrink: 0;
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
 .specContent {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
 }
 
 .specLabel {
   font-family: $font-mono;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #FFFFFF;
+  color: #F5F5F5;
 }
 
 .specText {
   font-family: $font-body;
-  font-size: 12.5px;
-  color: #9C9C9C;
-  line-height: 1.55;
+  font-size: 12px;
+  color: #999999;
+  line-height: 1.45;
 }
 
 // Right Sub-Column: Tech Stack & Results
 .rightSubColumn {
   display: flex;
   flex-direction: column;
-  gap: $space-24;
+  gap: $space-16;
 }
 
 .subBlockTitle {
   font-family: $font-mono;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: #FFFFFF;
-  margin-bottom: $space-12;
+  color: #F5F5F5;
+  margin-bottom: $space-8;
 }
 
 .stackPills {
   display: flex;
   flex-wrap: wrap;
-  gap: $space-6;
+  gap: $space-4;
 }
 
 .techPill {
   display: inline-flex;
   align-items: center;
-  gap: $space-6;
-  background: #141414;
-  border: 1px solid #262626;
+  gap: $space-4;
+  background: #171717;
+  border: 1px solid #303030;
   border-radius: $radius-pill;
-  padding: $space-4 $space-12;
+  padding: 3px $space-8;
   font-family: $font-mono;
-  font-size: 11.5px;
-  color: #E2E2E2;
-  transition: all $duration-fast ease;
+  font-size: 11px;
+  color: #C5C5C5;
+  transition: all 250ms ease;
 
   &:hover {
-    border-color: rgba(255, 255, 255, 0.35);
-    background: #1C1C1C;
+    border-color: rgba(197, 197, 197, 0.45);
+    background: #202020;
     color: #FFFFFF;
   }
 }
@@ -343,7 +326,7 @@
 .resultsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: $space-8;
+  gap: $space-6;
 
   @include mobile {
     grid-template-columns: repeat(3, 1fr);
@@ -351,31 +334,45 @@
 }
 
 .resultBox {
-  background: #121212;
-  border: 1px solid #242424;
+  background: #171717;
+  border: 1px solid #303030;
   border-radius: $radius-button;
-  padding: $space-12 $space-8;
+  padding: 8px $space-6;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 4px;
+  gap: 2px;
+  transition: border-color 250ms ease;
+
+  &:hover {
+    border-color: rgba(197, 197, 197, 0.4);
+  }
 }
 
 .resultValue {
   font-family: $font-display;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
-  color: #D8B4FE;
+  color: #C5C5C5;
   letter-spacing: -0.02em;
+}
+
+.resultValueGold {
+  font-family: $font-display;
+  font-size: 15px;
+  font-weight: 700;
+  color: #D6B46A;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 12px rgba(214, 180, 106, 0.25);
 }
 
 .resultLabel {
   font-family: $font-mono;
-  font-size: 10px;
-  color: #8E8E8E;
-  line-height: 1.3;
+  font-size: 9.5px;
+  color: #999999;
+  line-height: 1.25;
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
@@ -406,16 +403,16 @@
   font-family: $font-display;
   font-size: 16px;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #F5F5F5;
 }
 
 .projectsCount {
   font-family: $font-mono;
   font-size: 10px;
   font-weight: 700;
-  color: #B5B5B5;
-  background: #181818;
-  border: 1px solid #282828;
+  color: #C5C5C5;
+  background: #171717;
+  border: 1px solid #303030;
   padding: 2px $space-8;
   border-radius: $radius-pill;
 }
@@ -423,7 +420,7 @@
 .listHelper {
   font-family: $font-mono;
   font-size: 11px;
-  color: #666666;
+  color: #737373;
 }
 
 .projectsList {
@@ -434,8 +431,8 @@
 
 // Project Item Card
 .projectItem {
-  background: #0B0B0B;
-  border: 1px solid #1E1E1E;
+  background: #101010;
+  border: 1px solid #303030;
   border-radius: $radius-card;
   padding: $space-16 $space-20;
   display: flex;
@@ -445,7 +442,10 @@
   text-align: left;
   cursor: pointer;
   width: 100%;
-  transition: all 0.25s $ease-standard;
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              background 300ms ease,
+              border-color 300ms ease,
+              box-shadow 300ms ease;
   outline: none;
   -webkit-tap-highlight-color: transparent;
 
@@ -455,16 +455,27 @@
   }
 
   &:hover {
-    background: #131313;
-    border-color: rgba(255, 255, 255, 0.28);
+    background: #141414;
+    border-color: rgba(197, 197, 197, 0.4);
     transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), 0 0 16px rgba(197, 197, 197, 0.06);
+
+    .itemTitle {
+      color: #FFFFFF;
+    }
+
+    .itemIconBox {
+      border-color: rgba(197, 197, 197, 0.35);
+      color: #F5F5F5;
+      background: #1A1A1A;
+    }
   }
 
-  // Active Selected State
+  // Active Selected State (Quiet Monochrome & Silver Highlight)
   &.projectItemSelected {
-    background: #110E18;
-    border-color: #8B5CF6;
-    box-shadow: 0 0 24px rgba(139, 92, 246, 0.18);
+    background: #171717;
+    border-color: rgba(197, 197, 197, 0.6);
+    box-shadow: 0 0 20px rgba(197, 197, 197, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.08);
     outline: none;
 
     &:focus,
@@ -473,7 +484,7 @@
     }
 
     .itemIndex {
-      color: #D8B4FE;
+      color: #F5F5F5;
     }
 
     .itemTitle {
@@ -481,9 +492,10 @@
     }
 
     .itemIconBox {
-      border-color: rgba(139, 92, 246, 0.4);
-      color: #D8B4FE;
-      background: rgba(139, 92, 246, 0.12);
+      border-color: rgba(197, 197, 197, 0.45);
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.06);
     }
   }
 
@@ -503,22 +515,22 @@
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.1em;
-  color: #666666;
-  transition: color $duration-fast ease;
+  color: #737373;
+  transition: color 300ms ease;
 }
 
 .itemIconBox {
   width: 36px;
   height: 36px;
   border-radius: $radius-sm;
-  background: #141414;
-  border: 1px solid #242424;
+  background: #171717;
+  border: 1px solid #303030;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #A3A3A3;
+  color: #C5C5C5;
   flex-shrink: 0;
-  transition: all $duration-fast ease;
+  transition: all 300ms ease;
 }
 
 .itemInfo {
@@ -531,9 +543,9 @@
   font-family: $font-display;
   font-size: 14.5px;
   font-weight: 600;
-  color: #E2E2E2;
+  color: #C5C5C5;
   line-height: 1.3;
-  transition: color $duration-fast ease;
+  transition: color 300ms ease;
 }
 
 .itemTags {

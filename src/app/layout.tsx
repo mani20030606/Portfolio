@@ -11,7 +11,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: 'Mani Saideep Chintha — The Infinite Builder',
+  title: 'Mani Saideep Chintha — portfolio',
   description:
     'AI/ML Engineer · Computer Vision Developer · AI Product Builder. Turning curiosity into working systems. Open to Work.',
   keywords: [

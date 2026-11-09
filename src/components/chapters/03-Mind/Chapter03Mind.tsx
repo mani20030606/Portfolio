@@ -68,7 +68,7 @@ export function Chapter03Mind() {
       <div className={styles.inner}>
         {/* LEFT COLUMN: Section Heading, Description & All Expandable Skill Categories */}
         <div className={styles.leftCol}>
-          <AnimatedContent distance={30} duration={0.75} className={styles.header}>
+          <AnimatedContent distance={35} duration={0.75} ease="power3.out" className={styles.header}>
             <div className={styles.sectionMeta}>
               <span className={styles.sectionNum}>03</span>
               <span className={styles.sectionName}>The Mind</span>
@@ -84,7 +84,7 @@ export function Chapter03Mind() {
           </AnimatedContent>
 
           {/* Flat cluster list with preserved ReactBits entrance animation */}
-          <AnimatedContent distance={30} stagger={0.07} duration={0.75} className={styles.clusterList}>
+          <AnimatedContent distance={30} stagger={0.08} duration={0.75} ease="power3.out" className={styles.clusterList}>
             {skillClusters.map((cluster) => {
               const isOpen = expanded === cluster.id;
               return (
@@ -116,7 +116,7 @@ export function Chapter03Mind() {
 
         {/* RIGHT COLUMN: 3D React Bits CircularCarousel */}
         <div className={styles.rightCol} aria-label="3D Technology Stack Orbit">
-          <div className={styles.carouselContainer}>
+          <AnimatedContent distance={35} duration={0.85} ease="power3.out" className={styles.carouselContainer}>
             <CircularCarousel
               items={carouselItems}
               preset="orbit"
@@ -133,7 +133,7 @@ export function Chapter03Mind() {
               fadeColor="#000000"
               className={styles.skillCarousel}
             />
-          </div>
+          </AnimatedContent>
         </div>
       </div>
     </section>

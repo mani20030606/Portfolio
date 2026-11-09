@@ -11,7 +11,6 @@ import { Chapter02Journey } from '@/components/chapters/02-Journey/Chapter02Jour
 import { Chapter03Mind } from '@/components/chapters/03-Mind/Chapter03Mind';
 import { Chapter04Builds } from '@/components/chapters/04-Builds/Chapter04Builds';
 import { Chapter05Impact } from '@/components/chapters/05-Impact/Chapter05Impact';
-import { Chapter06Beyond } from '@/components/chapters/06-Beyond/Chapter06Beyond';
 import { Chapter07Connect } from '@/components/chapters/07-Connect/Chapter07Connect';
 import { initSmoothScroll, destroySmoothScroll } from '@/lib/animation/lenis';
 
@@ -38,7 +37,6 @@ export default function Home() {
         <Chapter03Mind />
         <Chapter04Builds />
         <Chapter05Impact />
-        <Chapter06Beyond />
         <Chapter07Connect />
       </main>
     </>

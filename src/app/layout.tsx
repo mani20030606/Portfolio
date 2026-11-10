@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://manisaideep-chintha-portfolio.vercel.app'),
   title: 'Mani Saideep Chintha | AI/ML Engineer & Computer Vision',
   description:
-    'Portfolio of Mani Saideep Chintha, AI/ML Engineer and Computer Vision Developer building intelligent systems through deep learning, edge AI, and real-world engineering.',
+    'Mani Saideep Chintha · AI/ML Engineer & Computer Vision Developer building real-world intelligent systems with deep learning, edge AI, and computer vision.',
   keywords: [
     'Mani Saideep Chintha',
     'AI Engineer',
@@ -61,14 +61,14 @@ export const metadata: Metadata = {
     siteName: 'Mani Saideep Chintha Portfolio',
     title: 'Mani Saideep Chintha | AI/ML Engineer & Computer Vision',
     description:
-      'Portfolio of Mani Saideep Chintha, AI/ML Engineer and Computer Vision Developer building intelligent systems through deep learning, edge AI, and real-world engineering.',
+      'AI/ML Engineer & Computer Vision Developer building intelligent systems with deep learning, edge AI, and real-world engineering.',
     images: [
       {
-        url: '/assets/photos/hero-01.png',
-        width: 1122,
-        height: 1402,
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
         alt: 'Mani Saideep Chintha — AI/ML Engineer and Computer Vision Developer',
-        type: 'image/png',
+        type: 'image/jpeg',
       },
     ],
   },
@@ -76,8 +76,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Mani Saideep Chintha | AI/ML Engineer & Computer Vision',
     description:
-      'Portfolio of Mani Saideep Chintha, AI/ML Engineer and Computer Vision Developer building intelligent systems through deep learning, edge AI, and real-world engineering.',
-    images: ['/assets/photos/hero-01.png'],
+      'AI/ML Engineer & Computer Vision Developer building intelligent systems with deep learning, edge AI, and real-world engineering.',
+    images: ['/og-image.jpg'],
     creator: '@manisaideep03',
   },
 };

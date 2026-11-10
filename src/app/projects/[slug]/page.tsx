@@ -37,11 +37,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       siteName: 'Mani Saideep Chintha Portfolio',
       images: [
         {
-          url: '/assets/photos/hero-01.png',
-          width: 1122,
-          height: 1402,
+          url: '/og-image.jpg',
+          width: 1200,
+          height: 630,
           alt: `${project.title} — Mani Saideep Chintha`,
-          type: 'image/png',
+          type: 'image/jpeg',
         },
       ],
     },
@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: 'summary_large_image',
       title,
       description,
-      images: ['/assets/photos/hero-01.png'],
+      images: ['/og-image.jpg'],
       creator: '@manisaideep03',
     },
   };

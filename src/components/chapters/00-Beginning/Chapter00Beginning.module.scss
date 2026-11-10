@@ -64,7 +64,7 @@
   @include mobile {
     max-width: 100%;
     margin-top: 0;
-    margin-bottom: 260px;
+    margin-bottom: 0;
   }
 }
 
@@ -83,7 +83,7 @@
   margin: 0;
 
   @include mobile {
-    font-size: clamp(34px, 9vw, 48px);
+    font-size: clamp(32px, 8.5vw, 44px);
     line-height: 1.1;
   }
 }
@@ -113,9 +113,10 @@
   margin-bottom: $space-32;
 
   @include mobile {
-    margin-top: $space-16;
-    margin-bottom: $space-24;
-    font-size: 14px;
+    margin-top: $space-12;
+    margin-bottom: $space-20;
+    font-size: 13.5px;
+    line-height: 1.55;
     max-width: 100%;
   }
 }
@@ -130,7 +131,7 @@
   @include mobile {
     flex-wrap: wrap;
     gap: $space-12;
-    margin-bottom: $space-24;
+    margin-bottom: $space-16;
   }
 }
 
@@ -221,12 +222,12 @@
 
   @include mobile {
     width: 90%;
-    max-width: 380px;
-    height: 56%;
+    max-width: 360px;
+    height: 44%;
     left: 0;
     right: 0;
     margin: 0 auto;
-    bottom: 14%;
+    bottom: -10px;
     pointer-events: auto;
   }
 }

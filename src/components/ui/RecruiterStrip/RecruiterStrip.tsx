@@ -24,6 +24,7 @@ export function RecruiterStrip() {
             href={links.resume}
             target="_blank"
             rel="noopener noreferrer"
+            download="Manisaideep_chintha.pdf"
             className={styles.resumeBtn}
           >
             RESUME ↗

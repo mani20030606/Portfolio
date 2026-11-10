@@ -17,7 +17,7 @@ export const links: LinksConfig = {
   linkedin: 'https://www.linkedin.com/in/mani-saideep-chintha-95bb07298/',
   kaggle: 'https://kaggle.com/manisaideepchintha',
   email: 'manisaideep03@gmail.com',
-  resume: '/assets/resume.pdf',
+  resume: '/assets/Manisaideep_chintha.pdf',
   instagram: '',
   youtube: '',
 };

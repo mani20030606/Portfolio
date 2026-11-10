@@ -205,9 +205,10 @@ export function Navigation() {
 
             {/* Glowing Champagne Resume Button */}
             <a
-              href="/assets/resume.pdf"
+              href={links.resume}
               target="_blank"
               rel="noopener noreferrer"
+              download="Manisaideep_chintha.pdf"
               className={styles.mobileResumeBtn}
               onClick={() => setMobileMenuOpen(false)}
             >

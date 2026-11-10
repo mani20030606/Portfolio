@@ -35,10 +35,10 @@ export function Chapter07Connect() {
     },
     {
       title: 'Download Resume',
-      subtitle: 'Latest CV (PDF)',
+      subtitle: 'Manisaideep_chintha.pdf',
       href: links.resume || '#',
       external: true,
-      download: true,
+      download: 'Manisaideep_chintha.pdf',
       icon: (
         <svg
           width="20"
@@ -154,6 +154,7 @@ export function Chapter07Connect() {
                 href={card.href}
                 target={card.external ? '_blank' : undefined}
                 rel={card.external ? 'noopener noreferrer' : undefined}
+                download={card.download ? card.download : undefined}
                 className={styles.card}
               >
                 <div className={styles.cardLeft}>

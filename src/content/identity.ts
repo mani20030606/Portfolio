@@ -26,9 +26,9 @@ export interface AchievementItem {
 export const identity = {
   name: 'Mani Saideep Chintha',
   location: 'Visakhapatnam, Andhra Pradesh, India',
-  title: 'AI/ML Engineer · Computer Vision Developer · AI Product Builder',
-  status: 'Open to Work',
-  statusDetail: 'Available for hire: AI / Computer Vision Engineer',
+  title: 'AI/ML Engineer and Computer Vision Developer',
+  status: 'Open to meaningful connections',
+  statusDetail: 'Open to meaningful connections, collaborations, and engineering conversations.',
   heroHeadline: 'I turn curiosity into working systems.',
   tagline: 'A journey through curiosity, intelligence, and creation.',
   heroDescription:

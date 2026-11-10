@@ -89,6 +89,18 @@ const blend = (from: number[], to: number[], amount: number) => {
   return `rgba(${r}, ${g}, ${b}, ${Math.round(alpha * 1000) / 1000})`;
 };
 
+function extractText(node: ReactNode): string {
+  if (node === null || node === undefined || typeof node === 'boolean') return '';
+  if (typeof node === 'string' || typeof node === 'number') return String(node);
+  if (Array.isArray(node)) return node.map(extractText).join('');
+  if (typeof node === 'object' && 'props' in node) {
+    const element = node as { type?: unknown; props?: { children?: ReactNode } };
+    if (element.type === 'br') return '\n';
+    return extractText(element.props?.children);
+  }
+  return '';
+}
+
 export function ShinyText({
   text,
   children,
@@ -116,6 +128,7 @@ export function ShinyText({
   const settingsRef = useRef<Settings | null>(null);
   const syncRef = useRef<(() => void) | null>(null);
   const content = children ?? text;
+  const plainText = typeof text === 'string' ? text : extractText(content);
 
   settingsRef.current = {
     color,
@@ -399,9 +412,12 @@ export function ShinyText({
     >
       {content}
       {glow > 0 ? (
-        <span ref={glowRef} className={styles.shinyTextGlow} aria-hidden="true">
-          {content}
-        </span>
+        <span
+          ref={glowRef}
+          className={styles.shinyTextGlow}
+          data-text={plainText}
+          aria-hidden="true"
+        />
       ) : null}
     </span>
   );

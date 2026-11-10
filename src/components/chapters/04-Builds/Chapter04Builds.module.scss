@@ -215,6 +215,23 @@
   border-bottom: 1px solid #222222;
 }
 
+.caseStudyLink {
+  color: #D6B46A;
+  font-family: $font-mono;
+  font-size: 11px;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  margin-left: 6px;
+  display: inline-block;
+  white-space: nowrap;
+  transition: all $duration-fast $ease-standard;
+
+  &:hover {
+    color: #FFF4D4;
+    text-decoration: underline;
+  }
+}
+
 // Details Grid inside Left Panel
 .detailsGrid {
   display: grid;

@@ -1,8 +1,8 @@
 # Mani Saideep Chintha — Full Knowledge Base & Technical Context
 
 Subject: Mani Saideep Chintha
-Status: Open to Work
-Availability: Available for hire: AI / Computer Vision Engineer
+Status: Open to meaningful connections, collaborations, and engineering conversations.
+Role: AI/ML Engineer and Computer Vision Developer
 
 ## 1. Professional Overview
 Mani Saideep Chintha is an AI/ML Engineer and Computer Vision Developer based in Andhra Pradesh, India. He builds end-to-end intelligent systems, taking problems from machine learning research and dataset curation through model training, quantization, API development, and edge mobile deployment.
@@ -34,9 +34,10 @@ Mani Saideep Chintha is an AI/ML Engineer and Computer Vision Developer based in
 - CareerPilot AI: Career readiness and skill-gap copilot demonstrated at the AI Hackathon by Product Space with Wispr Flow.
 
 ## 6. Official Contact Channels
+- Canonical: https://manisaideep-chintha-portfolio.vercel.app
 - Email: manisaideep03@gmail.com
-- Resume: https://manisaideep.dev/assets/resume.pdf
+- Resume: https://manisaideep-chintha-portfolio.vercel.app/assets/Manisaideep_chintha.pdf
 - GitHub: https://github.com/mani20030606
-- LinkedIn: https://linkedin.com/in/mani-saideep-chintha
+- LinkedIn: https://www.linkedin.com/in/mani-saideep-chintha-95bb07298/
 - Kaggle: https://kaggle.com/manisaideepchintha
 

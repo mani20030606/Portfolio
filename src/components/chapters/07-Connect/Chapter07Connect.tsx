@@ -133,10 +133,8 @@ export function Chapter07Connect() {
             {/* Status Pill */}
             <div className={styles.statusPill}>
               <span className={styles.statusDot} aria-hidden="true" />
-              <span className={styles.statusPillTitle}>Open to Work</span>
-              <span className={styles.statusDivider} aria-hidden="true">|</span>
               <span className={styles.statusPillDetail}>
-                Available for Intern · Full-time · Project Collaboration
+                Open to meaningful connections, collaborations, and engineering conversations.
               </span>
             </div>
           </AnimatedContent>

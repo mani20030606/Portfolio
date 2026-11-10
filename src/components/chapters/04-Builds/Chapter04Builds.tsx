@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from './Chapter04Builds.module.scss';
 import { projects } from '@/content/projects';
 import { ShinyText } from '@/components/ui/ShinyText/ShinyText';
@@ -170,7 +171,12 @@ export function Chapter04Builds() {
             </div>
 
             {/* Short Description */}
-            <p className={styles.projectDescription}>{activeProject.description}</p>
+            <p className={styles.projectDescription}>
+              {activeProject.description}{' '}
+              <Link href={`/projects/${activeProject.id}`} className={styles.caseStudyLink}>
+                Dedicated Page ↗
+              </Link>
+            </p>
 
             {/* Interior 2-Column Grid */}
             <div className={styles.detailsGrid}>

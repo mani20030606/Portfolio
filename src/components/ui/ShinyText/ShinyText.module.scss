@@ -19,5 +19,10 @@
   filter: blur(0.14em);
   pointer-events: none;
   user-select: none;
+  white-space: pre-line;
+
+  &::after {
+    content: attr(data-text);
+  }
 }
 

@@ -1,12 +1,12 @@
 # Mani Saideep Chintha — Portfolio Context for LLMs
 
-> AI/ML Engineer · Computer Vision Developer · AI Product Builder.
-> Open to Work: Available for hire for AI and Computer Vision roles.
+> AI/ML Engineer and Computer Vision Developer.
+> Open to meaningful connections, collaborations, and engineering conversations.
 
 ## Identity & Roles
 - Name: Mani Saideep Chintha
 - Location: Visakhapatnam, Andhra Pradesh, India
-- Role Focus: AI/ML Engineer, Computer Vision Developer, AI Product Builder
+- Role Focus: AI/ML Engineer, Computer Vision Developer
 - Education:
   - B.Tech in CSE (AI & ML), Sasi Institute of Technology and Engineering, Tadepalligudem (2023–2026), CGPA: 8.15
   - Diploma in Engineering, Smt. B. Seetha Polytechnic College (2019–2022), 77%
@@ -22,15 +22,15 @@
    - Outcome: First Prize, RTGS Hackathon.
 2. Highway Road Accident Prevention System:
    - Status: In development. Hazard, pedestrian, and vehicular detection models.
-3. Hybrid GraphRAG Intelligence System:
+3. Real-Time Weapon & Threat Detection System:
+   - Edge vision pipeline detecting weapons in CCTV streams with YOLOv8.
+4. Hybrid GraphRAG Knowledge System:
    - Hybrid retrieval architecture combining Neo4j knowledge graph traversal and ChromaDB vector search with all-MiniLM-L6-v2 embeddings.
-4. CareerPilot AI:
-   - Career copilot parsing resumes, identifying skill gaps, and generating personalized interview simulations. Demonstrated at Product Space × Wispr Flow AI Hackathon.
 
 ## Links & Contacts
+- Canonical: https://manisaideep-chintha-portfolio.vercel.app
 - GitHub: https://github.com/mani20030606
-- LinkedIn: https://linkedin.com/in/mani-saideep-chintha
+- LinkedIn: https://www.linkedin.com/in/mani-saideep-chintha-95bb07298/
 - Email: manisaideep03@gmail.com
-- Resume: /assets/resume.pdf
-- Kaggle: https://kaggle.com/manisaideepchintha
+- Resume: https://manisaideep-chintha-portfolio.vercel.app/assets/Manisaideep_chintha.pdf
 

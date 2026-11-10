@@ -290,7 +290,7 @@ export function Chapter02Journey() {
                     />
                   </div>
                   <div className={styles.previewHeaderText}>
-                    <h3 className={styles.previewTitle}>{activeMilestone.role}</h3>
+                    <p className={styles.previewTitle}>{activeMilestone.role}</p>
                     <p className={styles.previewInstitution}>{activeMilestone.institution}</p>
                     <span className={styles.previewPeriod}>{activeMilestone.period}</span>
                   </div>

@@ -4,7 +4,7 @@ Subject: Mani Saideep Chintha
 Status: Open to meaningful connections, collaborations, and engineering conversations.
 Role: AI/ML Engineer and Computer Vision Developer
 
-## 1. Professional Overview
+## 1. Professional  Overview
 Mani Saideep Chintha is an AI/ML Engineer and Computer Vision Developer based in Andhra Pradesh, India. He builds end-to-end intelligent systems, taking problems from machine learning research and dataset curation through model training, quantization, API development, and edge mobile deployment.
 
 ## 2. Technical Skills Inventory

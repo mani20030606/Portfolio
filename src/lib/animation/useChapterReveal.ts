@@ -1,4 +1,4 @@
-'use client';
+'use  client';
 
 import { RefObject } from 'react';
 import { useGSAP } from '@gsap/react';

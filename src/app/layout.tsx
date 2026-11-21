@@ -11,7 +11,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://manisaideep-chintha-portfolio.vercel.app'),
+  metadataBase:  new URL('https://manisaideep-chintha-portfolio.vercel.app'),
   title: 'Mani Saideep Chintha | AI/ML Engineer & Computer Vision',
   description:
     'Mani Saideep Chintha · AI/ML Engineer & Computer Vision Developer building real-world intelligent systems with deep learning, edge AI, and computer vision.',
